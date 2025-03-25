@@ -35,7 +35,7 @@ public class Order
     /// <summary>
     /// Статус заказа
     /// </summary>
-    public OrderStatus Status { get; set; }
+    public int Status { get; set; }
     
     /// <summary>
     /// Клиент, сделавший заказ
@@ -55,29 +55,3 @@ public class Order
     [NotMapped]
     public ICollection<OrderItem> OrderItems { get; set; }
 }
-
-/// <summary>
-/// Статусы заказа
-/// </summary>
-public enum OrderStatus
-{
-    /// <summary>
-    /// Новый заказ
-    /// </summary>
-    New,
-
-    /// <summary>
-    /// Заказ в обработке
-    /// </summary>
-    Processing,
-
-    /// <summary>
-    /// Заказ выполнен
-    /// </summary>
-    Completed,
-
-    /// <summary>
-    /// Заказ отменен
-    /// </summary>
-    Cancelled
-} 

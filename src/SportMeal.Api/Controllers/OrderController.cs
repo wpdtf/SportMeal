@@ -64,18 +64,6 @@ public class OrderController : ControllerBase
     }
 
     /// <summary>
-    /// Получает заказы сотрудника
-    /// </summary>
-    /// <param name="employeeId">Идентификатор сотрудника</param>
-    /// <returns>Список заказов сотрудника</returns>
-    [HttpGet("employee/{employeeId}")]
-    public async Task<ActionResult<IEnumerable<Order>>> GetEmployeeOrders(int employeeId)
-    {
-        var orders = await _orderRepository.GetOrdersByEmployeeIdAsync(employeeId);
-        return Ok(orders);
-    }
-
-    /// <summary>
     /// Создает новый заказ
     /// </summary>
     /// <param name="order">Данные заказа</param>
@@ -90,15 +78,15 @@ public class OrderController : ControllerBase
     }
 
     /// <summary>
-    /// Обновляет статус заказа
+    /// обновляет статус заказа
     /// </summary>
-    /// <param name="id">Идентификатор заказа</param>
-    /// <param name="status">Новый статус</param>
+    /// <param name="id">Идентификатор позиции</param>
+    /// <param name="status">Новый статус заказа</param>
     /// <returns>Результат операции</returns>
-    /// <response code="204">Статус успешно обновлен</response>
-    /// <response code="404">Заказ не найден</response>
-    [HttpPut("{id}/status")]
-    public async Task<IActionResult> UpdateOrderStatus(int id, [FromBody] OrderStatus status)
+    /// <response code="204">Позиция успешно удалена</response>
+    /// <response code="404">Позиция не найдена</response>
+    [HttpDelete("status/{id}")]
+    public async Task<IActionResult> UpdateOrderStatusAsync([FromQuery] int id, int status)
     {
         await _orderRepository.UpdateOrderStatusAsync(id, status);
         return NoContent();

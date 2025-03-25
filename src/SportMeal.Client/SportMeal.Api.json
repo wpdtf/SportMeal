@@ -34,27 +34,107 @@
         },
         "responses": {
           "200": {
-            "description": "Аутентификация успешна",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "$ref": "#/components/schemas/Client"
-                }
-              },
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Client"
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Client"
-                }
-              }
-            }
+            "description": "Аутентификация успешна"
           },
           "401": {
             "description": "Неверные учетные данные"
+          }
+        }
+      }
+    },
+    "/api/Category": {
+      "get": {
+        "tags": [
+          "Category"
+        ],
+        "operationId": "api/CategoryGET",
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Category"
+        ],
+        "operationId": "api/CategoryPOST",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Category"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Category"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Category"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Category"
+        ],
+        "operationId": "api/CategoryPUT",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Category"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Category"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Category"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/Category/{id}": {
+      "delete": {
+        "tags": [
+          "Category"
+        ],
+        "operationId": "api/Category/idDELETE",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
           }
         }
       }
@@ -251,88 +331,6 @@
             "description": "Клиент не найден"
           }
         }
-      },
-      "delete": {
-        "tags": [
-          "Client"
-        ],
-        "summary": "Удаляет клиента",
-        "operationId": "api/Client/idDELETE",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "description": "Идентификатор клиента",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "format": "int32"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Success"
-          },
-          "204": {
-            "description": "Клиент успешно удален"
-          },
-          "404": {
-            "description": "Клиент не найден"
-          }
-        }
-      }
-    },
-    "/api/Client/{id}/orders": {
-      "get": {
-        "tags": [
-          "Client"
-        ],
-        "summary": "Получает заказы клиента",
-        "operationId": "api/Client/id/ordersGET",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "description": "Идентификатор клиента",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "format": "int32"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Success",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/Order"
-                  }
-                }
-              },
-              "application/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/Order"
-                  }
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/Order"
-                  }
-                }
-              }
-            }
-          }
-        }
       }
     },
     "/api/Employee": {
@@ -525,88 +523,6 @@
           },
           "404": {
             "description": "Сотрудник не найден"
-          }
-        }
-      },
-      "delete": {
-        "tags": [
-          "Employee"
-        ],
-        "summary": "Удаляет сотрудника",
-        "operationId": "api/Employee/idDELETE",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "description": "Идентификатор сотрудника",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "format": "int32"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Success"
-          },
-          "204": {
-            "description": "Сотрудник успешно удален"
-          },
-          "404": {
-            "description": "Сотрудник не найден"
-          }
-        }
-      }
-    },
-    "/api/Employee/{id}/orders": {
-      "get": {
-        "tags": [
-          "Employee"
-        ],
-        "summary": "Получает заказы сотрудника",
-        "operationId": "api/Employee/id/ordersGET",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "description": "Идентификатор сотрудника",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "format": "int32"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Success",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/Order"
-                  }
-                }
-              },
-              "application/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/Order"
-                  }
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/Order"
-                  }
-                }
-              }
-            }
           }
         }
       }
@@ -804,106 +720,50 @@
         }
       }
     },
-    "/api/Order/employee/{employeeId}": {
-      "get": {
+    "/api/Order/status/{id}": {
+      "delete": {
         "tags": [
           "Order"
         ],
-        "summary": "Получает заказы сотрудника",
-        "operationId": "api/Order/employee/employeeIdGET",
-        "parameters": [
-          {
-            "name": "employeeId",
-            "in": "path",
-            "description": "Идентификатор сотрудника",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "format": "int32"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Success",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/Order"
-                  }
-                }
-              },
-              "application/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/Order"
-                  }
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/Order"
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/api/Order/{id}/status": {
-      "put": {
-        "tags": [
-          "Order"
-        ],
-        "summary": "Обновляет статус заказа",
-        "operationId": "api/Order/id/statusPUT",
+        "summary": "обновляет статус заказа",
+        "operationId": "api/Order/status/idDELETE",
         "parameters": [
           {
             "name": "id",
-            "in": "path",
-            "description": "Идентификатор заказа",
-            "required": true,
+            "in": "query",
+            "description": "Идентификатор позиции",
             "schema": {
               "type": "integer",
               "format": "int32"
             }
-          }
-        ],
-        "requestBody": {
-          "description": "Новый статус",
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/OrderStatus"
-              }
-            },
-            "text/json": {
-              "schema": {
-                "$ref": "#/components/schemas/OrderStatus"
-              }
-            },
-            "application/*+json": {
-              "schema": {
-                "$ref": "#/components/schemas/OrderStatus"
-              }
+          },
+          {
+            "name": "status",
+            "in": "query",
+            "description": "Новый статус заказа",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
             }
           }
-        },
+        ],
         "responses": {
           "200": {
             "description": "Success"
           },
           "204": {
-            "description": "Статус успешно обновлен"
+            "description": "Позиция успешно удалена"
           },
           "404": {
-            "description": "Заказ не найден"
+            "description": "Позиция не найдена"
           }
         }
       }
@@ -1562,58 +1422,6 @@
           }
         }
       }
-    },
-    "/api/Report/client/{clientId}/history": {
-      "get": {
-        "tags": [
-          "Report"
-        ],
-        "summary": "Получает историю заказов клиента",
-        "operationId": "api/Report/client/clientId/historyGET",
-        "parameters": [
-          {
-            "name": "clientId",
-            "in": "path",
-            "description": "Идентификатор клиента",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "format": "int32"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Success",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/OrderHistoryReport"
-                  }
-                }
-              },
-              "application/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/OrderHistoryReport"
-                  }
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/OrderHistoryReport"
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
     }
   },
   "components": {
@@ -1652,6 +1460,7 @@
             "items": {
               "$ref": "#/components/schemas/Product"
             },
+            "description": "Заказы клиента",
             "nullable": true
           }
         },
@@ -1795,7 +1604,9 @@
             "format": "double"
           },
           "status": {
-            "$ref": "#/components/schemas/OrderStatus"
+            "type": "integer",
+            "description": "Статус заказа",
+            "format": "int32"
           },
           "client": {
             "$ref": "#/components/schemas/Client"
@@ -1814,36 +1625,6 @@
         },
         "additionalProperties": false,
         "description": "Модель заказа"
-      },
-      "OrderHistoryReport": {
-        "type": "object",
-        "properties": {
-          "orderId": {
-            "type": "integer",
-            "description": "Идентификатор заказа",
-            "format": "int32"
-          },
-          "orderDate": {
-            "type": "string",
-            "description": "Дата заказа",
-            "format": "date-time"
-          },
-          "totalAmount": {
-            "type": "number",
-            "description": "Общая сумма заказа",
-            "format": "double"
-          },
-          "status": {
-            "$ref": "#/components/schemas/OrderStatus"
-          },
-          "itemCount": {
-            "type": "integer",
-            "description": "Количество позиций в заказе",
-            "format": "int32"
-          }
-        },
-        "additionalProperties": false,
-        "description": "Модель отчета по истории заказов клиента"
       },
       "OrderItem": {
         "type": "object",
@@ -1882,16 +1663,6 @@
         },
         "additionalProperties": false,
         "description": "Модель позиции заказа"
-      },
-      "OrderStatus": {
-        "enum": [
-          "new",
-          "processing",
-          "completed",
-          "cancelled"
-        ],
-        "type": "string",
-        "description": "Статусы заказа"
       },
       "Product": {
         "type": "object",

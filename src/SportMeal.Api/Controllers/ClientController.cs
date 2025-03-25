@@ -85,30 +85,4 @@ public class ClientController : ControllerBase
         await _clientRepository.UpdateClientAsync(client);
         return NoContent();
     }
-
-    /// <summary>
-    /// Удаляет клиента
-    /// </summary>
-    /// <param name="id">Идентификатор клиента</param>
-    /// <returns>Результат операции</returns>
-    /// <response code="204">Клиент успешно удален</response>
-    /// <response code="404">Клиент не найден</response>
-    [HttpDelete("{id}")]
-    public async Task<IActionResult> DeleteClient(int id)
-    {
-        await _clientRepository.DeleteClientAsync(id);
-        return NoContent();
-    }
-
-    /// <summary>
-    /// Получает заказы клиента
-    /// </summary>
-    /// <param name="id">Идентификатор клиента</param>
-    /// <returns>Список заказов</returns>
-    [HttpGet("{id}/orders")]
-    public async Task<ActionResult<IEnumerable<Order>>> GetClientOrdersAsync(int id)
-    {
-        var orders = await _clientRepository.GetClientOrdersAsync(id);
-        return Ok(orders);
-    }
 }

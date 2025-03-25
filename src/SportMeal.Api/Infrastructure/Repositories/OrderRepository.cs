@@ -1,8 +1,4 @@
-using Microsoft.EntityFrameworkCore;
-using SportMeal.Api.Domain.Interface;
 using SportMeal.Api.Domain.Models;
-using SportMeal.Api.Infrastructure.Data;
-using System.Text.Json;
 
 namespace SportMeal.Api.Infrastructure.Repositories;
 
@@ -33,12 +29,6 @@ public class OrderRepository : IOrderRepository
         return await Task.Run(() => _dbContext.SqlQuery<Order>(sql));
     }
 
-    public async Task<IEnumerable<Order>> GetOrdersByEmployeeIdAsync(int employeeId)
-    {
-        FormattableString sql = @$"exec dbo.ПроцедураПолученияЗаказовСотрудника @ИдСотрудника = {employeeId}";
-        return await Task.Run(() => _dbContext.SqlQuery<Order>(sql));
-    }
-
     public async Task<Order> CreateOrderAsync(Order order)
     {
         FormattableString sql = @$"exec dbo.ПроцедураСозданияЗаказа 
@@ -50,7 +40,7 @@ public class OrderRepository : IOrderRepository
         return await Task.Run(() => _dbContext.SqlQuery<Order>(sql).AsEnumerable().First());
     }
 
-    public async Task UpdateOrderStatusAsync(int orderId, OrderStatus status)
+    public async Task UpdateOrderStatusAsync(int orderId, int status)
     {
         FormattableString sql = @$"exec dbo.ПроцедураОбновленияСтатусаЗаказа 
             @ИдЗаказа = {orderId}, 
@@ -103,11 +93,5 @@ public class OrderRepository : IOrderRepository
             @ДатаНачала = {startDate}, 
             @ДатаКонца = {endDate}";
         return await Task.Run(() => _dbContext.SqlQuery<ProductPopularityReport>(sql));
-    }
-
-    public async Task<IEnumerable<OrderHistoryReport>> GetClientOrderHistoryAsync(int clientId)
-    {
-        FormattableString sql = @$"exec dbo.ПроцедураИсторииЗаказовКлиента @ИдКлиента = {clientId}";
-        return await Task.Run(() => _dbContext.SqlQuery<OrderHistoryReport>(sql));
     }
 } 

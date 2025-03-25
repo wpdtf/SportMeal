@@ -75,7 +75,7 @@ public class OrderHistoryReport
     /// <summary>
     /// Статус заказа
     /// </summary>
-    public OrderStatus Status { get; set; }
+    public int Status { get; set; }
 
     /// <summary>
     /// Количество позиций в заказе

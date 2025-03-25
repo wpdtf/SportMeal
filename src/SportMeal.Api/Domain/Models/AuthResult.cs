@@ -4,6 +4,6 @@ namespace SportMeal.Api.Domain.Models;
 
 public class AuthResult
 {
-    public string UserType { get; set; }
-    public int Id { get; set; }
+    public string? UserType { get; set; }
+    public int? Id { get; set; }
 }

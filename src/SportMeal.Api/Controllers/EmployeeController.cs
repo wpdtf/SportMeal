@@ -85,30 +85,4 @@ public class EmployeeController : ControllerBase
         await _employeeRepository.UpdateEmployeeAsync(employee);
         return NoContent();
     }
-
-    /// <summary>
-    /// Удаляет сотрудника
-    /// </summary>
-    /// <param name="id">Идентификатор сотрудника</param>
-    /// <returns>Результат операции</returns>
-    /// <response code="204">Сотрудник успешно удален</response>
-    /// <response code="404">Сотрудник не найден</response>
-    [HttpDelete("{id}")]
-    public async Task<IActionResult> DeleteEmployee(int id)
-    {
-        await _employeeRepository.DeleteEmployeeAsync(id);
-        return NoContent();
-    }
-
-    /// <summary>
-    /// Получает заказы сотрудника
-    /// </summary>
-    /// <param name="id">Идентификатор сотрудника</param>
-    /// <returns>Список заказов</returns>
-    [HttpGet("{id}/orders")]
-    public async Task<ActionResult<IEnumerable<Order>>> GetEmployeeOrders(int id)
-    {
-        var orders = await _employeeRepository.GetEmployeeOrdersAsync(id);
-        return Ok(orders);
-    }
 } 

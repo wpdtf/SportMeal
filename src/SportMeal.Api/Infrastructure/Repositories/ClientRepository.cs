@@ -1,8 +1,4 @@
-using Microsoft.EntityFrameworkCore;
-using SportMeal.Api.Domain.Interface;
 using SportMeal.Api.Domain.Models;
-using SportMeal.Api.Infrastructure.Data;
-using System.Text.Json;
 
 namespace SportMeal.Api.Infrastructure.Repositories;
 
@@ -48,23 +44,5 @@ public class ClientRepository : IClientRepository
             @Телефон = {client.Phone},
             @Почта = {client.Email}";
         await _dbContext.ExecuteSqlAsync(sql);
-    }
-
-    public async Task DeleteClientAsync(int clientId)
-    {
-        FormattableString sql = @$"exec dbo.ПроцедураУдаленияКлиента @ИдКлиента = {clientId}";
-        await _dbContext.ExecuteSqlAsync(sql);
-    }
-
-    public async Task<Client> AuthenticateAsync(string login, string passwordHash)
-    {
-        FormattableString sql = @$"exec dbo.ПроцедураАвторизации @Логин = {login}, @ХешПароля = {passwordHash}";
-        return await Task.Run(() => _dbContext.SqlQuery<Client>(sql).AsEnumerable().FirstOrDefault());
-    }
-
-    public async Task<IEnumerable<Order>> GetClientOrdersAsync(int clientId)
-    {
-        FormattableString sql = @$"exec dbo.ПроцедураПолученияЗаказовКлиента @ИдКлиента = {clientId}";
-        return await Task.Run(() => _dbContext.SqlQuery<Order>(sql));
     }
 }

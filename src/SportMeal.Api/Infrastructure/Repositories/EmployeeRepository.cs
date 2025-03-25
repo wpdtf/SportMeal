@@ -1,7 +1,4 @@
-using Microsoft.EntityFrameworkCore;
-using SportMeal.Api.Domain.Interface;
 using SportMeal.Api.Domain.Models;
-using SportMeal.Api.Infrastructure.Data;
 
 namespace SportMeal.Api.Infrastructure.Repositories;
 
@@ -49,23 +46,5 @@ public class EmployeeRepository : IEmployeeRepository
             @Почта = {employee.Email},
             @Должность = {employee.Position}";
         await _dbContext.ExecuteSqlAsync(sql);
-    }
-
-    public async Task DeleteEmployeeAsync(int employeeId)
-    {
-        FormattableString sql = @$"exec dbo.ПроцедураУдаленияСотрудника @ИдСотрудника = {employeeId}";
-        await _dbContext.ExecuteSqlAsync(sql);
-    }
-
-    public async Task<Employee> AuthenticateAsync(string login, string passwordHash)
-    {
-        FormattableString sql = @$"exec dbo.ПроцедураАвторизации @Логин = {login}, @ХешПароля = {passwordHash}";
-        return await Task.Run(() => _dbContext.SqlQuery<Employee>(sql).AsEnumerable().FirstOrDefault());
-    }
-
-    public async Task<IEnumerable<Order>> GetEmployeeOrdersAsync(int employeeId)
-    {
-        FormattableString sql = @$"exec dbo.ПроцедураПолученияЗаказовСотрудника @ИдСотрудника = {employeeId}";
-        return await Task.Run(() => _dbContext.SqlQuery<Order>(sql));
     }
 } 

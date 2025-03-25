@@ -998,7 +998,7 @@ CREATE PROCEDURE [dbo].[ПроцедураИзмененияСтатусаЗак
     @ИдЗаказа INT,
     @НовыйСтатус NVARCHAR(20)
 AS
-BEGIN
+        BEGIN
     UPDATE Заказы
     SET Статус = @НовыйСтатус
     WHERE ИдЗаказа = @ИдЗаказа;

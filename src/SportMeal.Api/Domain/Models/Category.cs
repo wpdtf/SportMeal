@@ -1,3 +1,5 @@
+using System.ComponentModel.DataAnnotations.Schema;
+
 namespace SportMeal.Api.Domain.Models;
 
 public class Category
@@ -6,5 +8,9 @@ public class Category
     public string Name { get; set; }
     public string Description { get; set; }
     
+    /// <summary>
+    /// Заказы клиента
+    /// </summary>
+    [NotMapped]
     public ICollection<Product> Products { get; set; }
 } 

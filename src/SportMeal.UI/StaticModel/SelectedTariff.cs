@@ -1,8 +1,8 @@
-﻿namespace Booking.UI.StaticModel;
+﻿namespace SportMeal.UI.StaticModel;
 
-class SelectedTariff
+public static class SelectedTariff
 {
     public static int TarrifId { get; set; }
 
-    public static string Name { get; set; }
+    public static string Name { get; set; } = string.Empty;
 }

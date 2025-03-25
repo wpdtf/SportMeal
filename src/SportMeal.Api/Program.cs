@@ -1,10 +1,5 @@
-using Microsoft.Extensions.Options;
-using Microsoft.EntityFrameworkCore;
-using SportMeal.Api.Domain.Interface;
-using SportMeal.Api.Infrastructure.Data;
-using SportMeal.Api.Infrastructure.Repositories;
-using DataBaseContext = SportMeal.Api.Infrastructure.Repositories.DataBaseContext;
 using SportMeal.Api.Domain.Services;
+using DataBaseContext = SportMeal.Api.Infrastructure.Repositories.DataBaseContext;
 
 namespace SportMeal.Api;
 
@@ -55,6 +50,7 @@ internal static class Program
         builder.Services.AddScoped<IClientRepository, ClientRepository>();
         builder.Services.AddScoped<IOrderRepository, OrderRepository>();
         builder.Services.AddScoped<IProductRepository, ProductRepository>();
+        builder.Services.AddScoped<ICategoryRepository, CategRepository>();
         builder.Services.AddScoped<IEmployeeRepository, EmployeeRepository>();
         builder.Services.AddScoped<IAuthRepository, AuthRepository>();
         builder.Services.AddScoped<AuthService>();

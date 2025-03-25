@@ -32,25 +32,4 @@ public interface IClientRepository
     /// </summary>
     /// <param name="client">Обновленные данные клиента</param>
     Task UpdateClientAsync(Client client);
-
-    /// <summary>
-    /// Удаляет клиента
-    /// </summary>
-    /// <param name="clientId">Идентификатор клиента</param>
-    Task DeleteClientAsync(int clientId);
-
-    /// <summary>
-    /// Аутентифицирует клиента
-    /// </summary>
-    /// <param name="login">Логин</param>
-    /// <param name="passwordHash">Хеш пароля</param>
-    /// <returns>Клиент или null, если аутентификация не удалась</returns>
-    Task<Client> AuthenticateAsync(string login, string passwordHash);
-
-    /// <summary>
-    /// Получает заказы клиента
-    /// </summary>
-    /// <param name="clientId">Идентификатор клиента</param>
-    /// <returns>Список заказов клиента</returns>
-    Task<IEnumerable<Order>> GetClientOrdersAsync(int clientId);
 }

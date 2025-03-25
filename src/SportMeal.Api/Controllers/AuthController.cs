@@ -24,7 +24,7 @@ public class AuthController : ControllerBase
     /// <response code="200">Аутентификация успешна</response>
     /// <response code="401">Неверные учетные данные</response>
     [HttpPost("auth")]
-    public async Task<ActionResult<Client>> Authenticate(AuthDTO authDTO)
+    public async Task<ActionResult<object>> Authenticate(AuthDTO authDTO)
     {
         var user = await _authService.AuthenticateAsync(authDTO.Login, authDTO.Password);
 

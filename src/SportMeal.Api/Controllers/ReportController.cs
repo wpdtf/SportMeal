@@ -51,16 +51,4 @@ public class ReportController : ControllerBase
         var report = await _orderRepository.GetPopularProductsReportAsync(startDate, endDate);
         return Ok(report);
     }
-
-    /// <summary>
-    /// Получает историю заказов клиента
-    /// </summary>
-    /// <param name="clientId">Идентификатор клиента</param>
-    /// <returns>Список отчетов по истории заказов</returns>
-    [HttpGet("client/{clientId}/history")]
-    public async Task<ActionResult<IEnumerable<OrderHistoryReport>>> GetClientOrderHistory(int clientId)
-    {
-        var history = await _orderRepository.GetClientOrderHistoryAsync(clientId);
-        return Ok(history);
-    }
 }

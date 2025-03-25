@@ -28,25 +28,11 @@ public interface IOrderRepository
     Task<IEnumerable<Order>> GetOrdersByClientIdAsync(int clientId);
 
     /// <summary>
-    /// Получает заказы сотрудника
-    /// </summary>
-    /// <param name="employeeId">Идентификатор сотрудника</param>
-    /// <returns>Список заказов сотрудника</returns>
-    Task<IEnumerable<Order>> GetOrdersByEmployeeIdAsync(int employeeId);
-
-    /// <summary>
     /// Создает новый заказ
     /// </summary>
     /// <param name="order">Данные заказа</param>
     /// <returns>Созданный заказ</returns>
     Task<Order> CreateOrderAsync(Order order);
-
-    /// <summary>
-    /// Обновляет статус заказа
-    /// </summary>
-    /// <param name="orderId">Идентификатор заказа</param>
-    /// <param name="status">Новый статус</param>
-    Task UpdateOrderStatusAsync(int orderId, OrderStatus status);
 
     /// <summary>
     /// Получает позиции заказа
@@ -91,9 +77,9 @@ public interface IOrderRepository
     Task<IEnumerable<ProductPopularityReport>> GetPopularProductsReportAsync(DateTime startDate, DateTime endDate);
 
     /// <summary>
-    /// Получает историю заказов клиента
+    /// Обновление статуса заказа
     /// </summary>
-    /// <param name="clientId">Идентификатор клиента</param>
-    /// <returns>Список отчетов по истории заказов</returns>
-    Task<IEnumerable<OrderHistoryReport>> GetClientOrderHistoryAsync(int clientId);
+    /// <param name="orderId">Какой заказ</param>
+    /// <param name="status">Какой статус</param>
+    Task UpdateOrderStatusAsync(int orderId, int status);
 } 
