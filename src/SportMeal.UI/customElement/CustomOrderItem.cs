@@ -27,6 +27,9 @@ public class CustomOrderItem : Guna2Panel
     [DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
     public Guna2HtmlLabel StatusLabel { get; private set; }
 
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
+    public Guna2Button EditButton { get; private set; }
+
     [DefaultValue("")]
     public int OrderId
     {
@@ -103,11 +106,22 @@ public class CustomOrderItem : Guna2Panel
         this.BorderRadius = 10;
         this.FillColor = Color.White;
         this.BorderThickness = 1;
-        this.BorderColor = Color.FromArgb(16, 90, 101);
+        this.BorderColor = Color.FromArgb(0, 0, 192);
         this.Margin = new Padding(5);
 
+        EditButton = new Guna2Button();
+        EditButton.Text = "✏️";
+        EditButton.Font = new Font("Segoe UI Emoji", 15f);
+        EditButton.Size = new Size(50, 50);
+        EditButton.Location = new Point(110, 5);
+        EditButton.BorderRadius = 15;
+        EditButton.FillColor = Color.Transparent;
+        EditButton.ForeColor = Color.FromArgb(0, 0, 192);
+        EditButton.HoverState.FillColor = Color.LightGray;
+        EditButton.HoverState.ForeColor = Color.DimGray;
+
         NameLabel = new Guna2HtmlLabel();
-        NameLabel.Size = new Size(165, 20);
+        NameLabel.Size = new Size(140, 20);
         NameLabel.Font = new Font("Segoe UI Semibold", 12f, FontStyle.Bold);
         NameLabel.Location = new Point(10, 5);
         NameLabel.ForeColor = Color.Black;
@@ -135,5 +149,6 @@ public class CustomOrderItem : Guna2Panel
         this.Controls.Add(DateLabel);
         this.Controls.Add(AmountLabel);
         this.Controls.Add(StatusLabel);
+        this.Controls.Add(EditButton);
     }
 }

@@ -60,14 +60,14 @@ public class CustomCheckBoxItem : Guna2Panel
         this.BorderRadius = 10;
         this.FillColor = Color.White;
         this.BorderThickness = 1;
-        this.BorderColor = Color.FromArgb(16, 90, 101);
+        this.BorderColor = Color.FromArgb(0, 0, 192);
         this.Margin = new Padding(5);
 
         // Создание чекбокса
         CheckBox = new Guna2CheckBox();
         CheckBox.CheckedState.BorderRadius = 2;
         CheckBox.CheckedState.BorderThickness = 0;
-        CheckBox.CheckedState.FillColor = Color.FromArgb(94, 148, 255);
+        CheckBox.CheckedState.FillColor = Color.FromArgb(0, 0, 192);
         CheckBox.AutoSize = false;
         CheckBox.Size = new Size(180, 30);
         CheckBox.Location = new Point(10, 5);

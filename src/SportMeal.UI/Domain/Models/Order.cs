@@ -17,7 +17,7 @@ public class Order
     [JsonPropertyName("status")]
     public OrderStatus Status { get; set; }
 
-    public ICollection<Product> Items { get; set; }
+    public ICollection<OrderItem> Items { get; set; }
 }
 
 public enum OrderStatus

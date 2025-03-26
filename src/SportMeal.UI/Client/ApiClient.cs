@@ -176,12 +176,30 @@ public class ApiClient
     {
         var json = JsonSerializer.Serialize(order);
         var content = new StringContent(json, Encoding.UTF8, new MediaTypeHeaderValue("application/json"));
-        var response = await _httpClient.PostAsync("orders", content);
+        var response = await _httpClient.PostAsync("Order", content);
 
         if (response.IsSuccessStatusCode)
         {
             var responseJson = await response.Content.ReadAsStringAsync() ?? throw new Exception("Не удалось обработать ответ с ошибкой");
             return JsonSerializer.Deserialize<Order>(responseJson) ?? throw new Exception("Не удалось создать заказ");
+        }
+
+        var errorJson = await response.Content.ReadAsStringAsync() ?? throw new Exception("Не удалось обработать ответ с ошибкой");
+        var error = JsonSerializer.Deserialize<Error>(errorJson) ?? throw new Exception("Не удалось обработать ответ с ошибкой");
+        MessageBox.Show(error.Detail, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        throw new Exception(error.Detail);
+    }
+
+    public async Task AddItemInOrderAsync(int idOrder, OrderItem orderItem)
+    {
+        var json = JsonSerializer.Serialize(orderItem);
+        var content = new StringContent(json, Encoding.UTF8, new MediaTypeHeaderValue("application/json"));
+        var response = await _httpClient.PostAsync($"Order/{idOrder}/items", content);
+
+        if (response.IsSuccessStatusCode)
+        {
+            var responseJson = await response.Content.ReadAsStringAsync() ?? throw new Exception("Не удалось обработать ответ с ошибкой");
+            return;
         }
 
         var errorJson = await response.Content.ReadAsStringAsync() ?? throw new Exception("Не удалось обработать ответ с ошибкой");

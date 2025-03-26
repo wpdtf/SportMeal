@@ -10,6 +10,7 @@ namespace SportMeal.UI.customElement;
 
 public class CustomProductItem : Guna2Panel
 {
+    private int _productId;
     private string _productName;
     private string _categoryName;
     private string _description;
@@ -25,6 +26,19 @@ public class CustomProductItem : Guna2Panel
     public Guna2HtmlLabel DescriptionLabel { get; private set; }
     [DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
     public Guna2HtmlLabel PriceLabel { get; private set; }
+
+    [DefaultValue("")]
+    public int ProductId
+    {
+        get => _productId;
+        set
+        {
+            if (_productId != value)
+            {
+                _productId = value;
+            }
+        }
+    }
 
     [DefaultValue("")]
     public string ProductName
@@ -83,8 +97,9 @@ public class CustomProductItem : Guna2Panel
         InitializeComponent();
     }
 
-    public CustomProductItem(string productName, string categoryName, string description, decimal price) : this()
+    public CustomProductItem(int productId, string productName, string categoryName, string description, decimal price) : this()
     {
+        ProductId = productId;
         ProductName = productName;
         CategoryName = categoryName;
         Description = description;
@@ -102,7 +117,7 @@ public class CustomProductItem : Guna2Panel
         this.BorderRadius = 10;
         this.FillColor = Color.White;
         this.BorderThickness = 1;
-        this.BorderColor = Color.FromArgb(16, 90, 101);
+        this.BorderColor = Color.FromArgb(0, 0, 192);
         this.Margin = new Padding(5);
 
         // Создание кнопки "Добавить в заказ"

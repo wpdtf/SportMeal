@@ -13,6 +13,7 @@ public partial class FormMain : Form
     public event Action<CustomCheckBoxItem> SelectionChanged;
     private CustomCheckBoxItem _selectedItem = default;
     private List<Category> _listCateg;
+    private List<Order> _listOrder;
 
     public CustomCheckBoxItem GetSelectedItem() => _selectedItem;
 
@@ -126,15 +127,16 @@ public partial class FormMain : Form
 
         foreach (var item in product)
         {
-            var customItem = new CustomProductItem(item.Name, _listCateg.FirstOrDefault(i => i.Id == item.CategoryId).Name, item.Description, item.Price)
+            var customItem = new CustomProductItem(item.Id, item.Name, _listCateg.FirstOrDefault(i => i.Id == item.CategoryId).Name, item.Description, item.Price)
             {
-                //Cursor = Cursors.Hand
             };
 
             customItem.AddToOrderButton.Click += (s, e) =>
             {
-                //customItem.CheckBox.Checked = !customItem.CheckBox.Checked;
+                AddToOrderAsync(customItem.ProductId, item.Price);
             };
+
+            customItem.AddToOrderButton.Visible = CurrentUser.Position == "" ? true : false;
 
             flowLayoutPanel2.Controls.Add(customItem);
         }
@@ -142,16 +144,15 @@ public partial class FormMain : Form
 
     private async Task UploadOrderAsync()
     {
-        var order = new List<Order>();
         try
         {
             if (CurrentUser.Position == "")
             {
-                order = await _apiClient.GetClientOrdersAsync(CurrentUser.Id);
+                _listOrder = await _apiClient.GetClientOrdersAsync(CurrentUser.Id);
             }
             else
             {
-                order = await _apiClient.GetClientOrdersAsync();
+                _listOrder = await _apiClient.GetClientOrdersAsync();
             }
 
         }
@@ -163,52 +164,46 @@ public partial class FormMain : Form
 
         flowLayoutPanel3.Controls.Clear();
 
-        foreach (var item in order)
+        foreach (var item in _listOrder)
         {
             var customItem = new CustomOrderItem(item.Id, item.OrderDate, item.TotalAmount, item.Status)
             {
             };
 
+            customItem.EditButton.Visible = item.Status == OrderStatus.Новый ? true : false;
+
             flowLayoutPanel3.Controls.Add(customItem);
         }
     }
 
-    private void Guna2Button1_Click(object sender, EventArgs e)
+    private async Task AddToOrderAsync(int idProduct, decimal unitPrice)
     {
-        //OpenForm(new FormCar());
-    }
+        var orderItem = _listOrder.FirstOrDefault(i => i.Status == OrderStatus.Новый);
 
-    private void Guna2Button2_Click(object sender, EventArgs e)
-    {
+        if (orderItem == null)
+        {
+            var newOrder = new Order()
+            {
+                ClientId = CurrentUser.Id,
+                OrderDate = DateTime.Now,
+                TotalAmount = 0,
+                Status = OrderStatus.Новый
+            };
 
-    }
+            orderItem = await _apiClient.CreateOrderAsync(newOrder);
+        }
 
-    private void Guna2Button6_Click(object sender, EventArgs e)
-    {
+        var item = new OrderItem()
+        {
+            OrderId = orderItem.Id,
+            ProductId = idProduct,
+            Quantity = 1,
+            UnitPrice = unitPrice
+        };
 
-    }
+        await _apiClient.AddItemInOrderAsync(orderItem.Id, item);
 
-    private void Guna2Button5_Click(object sender, EventArgs e)
-    {
-
-    }
-
-    private void Guna2Button3_Click(object sender, EventArgs e)
-    {
-        Application.Exit();
-    }
-
-    private void Guna2Button4_Click(object sender, EventArgs e)
-    {
-
-    }
-
-    private void guna2Button7_Click(object sender, EventArgs e)
-    {
-    }
-
-    private void guna2Button8_Click(object sender, EventArgs e)
-    {
+        await UploadOrderAsync();
     }
 
     private void guna2ControlBox2_Click(object sender, EventArgs e)
