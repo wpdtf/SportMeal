@@ -39,7 +39,7 @@ public interface IOrderRepository
     /// </summary>
     /// <param name="orderId">Идентификатор заказа</param>
     /// <returns>Список позиций заказа</returns>
-    Task<IEnumerable<OrderItem>> GetOrderItemsAsync(int orderId);
+    Task<IEnumerable<OrderItemFull>> GetOrderItemsAsync(int orderId);
 
     /// <summary>
     /// Добавляет позицию в заказ

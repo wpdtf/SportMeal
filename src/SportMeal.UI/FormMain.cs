@@ -1,6 +1,7 @@
 using SportMeal.UI.Client;
 using SportMeal.UI.customElement;
 using SportMeal.UI.Domain.Models;
+using SportMeal.UI.FormDialog;
 using SportMeal.UI.StaticModel;
 using System.Windows.Forms;
 
@@ -142,7 +143,7 @@ public partial class FormMain : Form
         }
     }
 
-    private async Task UploadOrderAsync()
+    public async Task UploadOrderAsync()
     {
         try
         {
@@ -166,11 +167,16 @@ public partial class FormMain : Form
 
         foreach (var item in _listOrder)
         {
-            var customItem = new CustomOrderItem(item.Id, item.OrderDate, item.TotalAmount, item.Status)
+            var customItem = new CustomOrder(item.Id, item.OrderDate, item.TotalAmount, item.Status)
             {
             };
 
             customItem.EditButton.Visible = item.Status == OrderStatus.Новый ? true : false;
+
+            customItem.EditButton.Click += (s, e) =>
+            {
+                EditOrderItem(item.Id);
+            };
 
             flowLayoutPanel3.Controls.Add(customItem);
         }
@@ -209,6 +215,12 @@ public partial class FormMain : Form
     private void guna2ControlBox2_Click(object sender, EventArgs e)
     {
         Application.Exit();
+    }
+
+    private async void EditOrderItem(int orderId)
+    {
+        FormEditOrderItem form = new(_apiClient, this, orderId);
+        form.Show();
     }
 
     private void guna2Button4_Click_1(object sender, EventArgs e)

@@ -130,7 +130,6 @@ public class ApiClient
 
         var errorJson = await response.Content.ReadAsStringAsync() ?? throw new Exception("Не удалось обработать ответ с ошибкой");
         var error = JsonSerializer.Deserialize<Error>(errorJson) ?? throw new Exception("Не удалось обработать ответ с ошибкой");
-        MessageBox.Show(error.Detail, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
         throw new Exception(error.Detail);
     }
 
@@ -149,7 +148,6 @@ public class ApiClient
 
         var errorJson = await response.Content.ReadAsStringAsync() ?? throw new Exception("Не удалось обработать ответ с ошибкой");
         var error = JsonSerializer.Deserialize<Error>(errorJson) ?? throw new Exception("Не удалось обработать ответ с ошибкой");
-        MessageBox.Show(error.Detail, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
         throw new Exception(error.Detail);
     }
 
@@ -168,7 +166,6 @@ public class ApiClient
 
         var errorJson = await response.Content.ReadAsStringAsync() ?? throw new Exception("Не удалось обработать ответ с ошибкой");
         var error = JsonSerializer.Deserialize<Error>(errorJson) ?? throw new Exception("Не удалось обработать ответ с ошибкой");
-        MessageBox.Show(error.Detail, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
         throw new Exception(error.Detail);
     }
 
@@ -186,7 +183,6 @@ public class ApiClient
 
         var errorJson = await response.Content.ReadAsStringAsync() ?? throw new Exception("Не удалось обработать ответ с ошибкой");
         var error = JsonSerializer.Deserialize<Error>(errorJson) ?? throw new Exception("Не удалось обработать ответ с ошибкой");
-        MessageBox.Show(error.Detail, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
         throw new Exception(error.Detail);
     }
 
@@ -204,7 +200,81 @@ public class ApiClient
 
         var errorJson = await response.Content.ReadAsStringAsync() ?? throw new Exception("Не удалось обработать ответ с ошибкой");
         var error = JsonSerializer.Deserialize<Error>(errorJson) ?? throw new Exception("Не удалось обработать ответ с ошибкой");
-        MessageBox.Show(error.Detail, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        throw new Exception(error.Detail);
+    }
+
+    public async Task<List<OrderItemFull>> GetOrderItemFullAsync(int idOrder)
+    {
+        var response = await _httpClient.GetAsync($"Order/{idOrder}/items");
+        if (response.IsSuccessStatusCode)
+        {
+            var responseJson = await response.Content.ReadAsStringAsync();
+            return JsonSerializer.Deserialize<List<OrderItemFull>>(responseJson) ?? throw new Exception("Не удалось получить список позиций");
+        }
+
+        var errorJson = await response.Content.ReadAsStringAsync() ?? throw new Exception("Не удалось обработать ответ с ошибкой");
+        var error = JsonSerializer.Deserialize<Error>(errorJson) ?? throw new Exception("Не удалось обработать ответ с ошибкой");
+        throw new Exception(error.Detail);
+    }
+
+    public async Task<Order> GetOrderInfo(int idOrder)
+    {
+        var response = await _httpClient.GetAsync($"Order/{idOrder}");
+        if (response.IsSuccessStatusCode)
+        {
+            var responseJson = await response.Content.ReadAsStringAsync();
+            return JsonSerializer.Deserialize<Order>(responseJson) ?? throw new Exception("Не удалось получить информацию по заказу");
+        }
+
+        var errorJson = await response.Content.ReadAsStringAsync() ?? throw new Exception("Не удалось обработать ответ с ошибкой");
+        var error = JsonSerializer.Deserialize<Error>(errorJson) ?? throw new Exception("Не удалось обработать ответ с ошибкой");
+        throw new Exception(error.Detail);
+    }
+
+    public async Task DeleteOrderItemAsync(int IdOrderItem)
+    {
+        var response = await _httpClient.DeleteAsync($"Order/items/{IdOrderItem}");
+
+        if (response.IsSuccessStatusCode)
+        {
+            var responseJson = await response.Content.ReadAsStringAsync() ?? throw new Exception("Не удалось обработать ответ с ошибкой");
+            return;
+        }
+
+        var errorJson = await response.Content.ReadAsStringAsync() ?? throw new Exception("Не удалось обработать ответ с ошибкой");
+        var error = JsonSerializer.Deserialize<Error>(errorJson) ?? throw new Exception("Не удалось обработать ответ с ошибкой");
+        throw new Exception(error.Detail);
+    }
+
+    public async Task UpdateOrderItem(int IdOrderItem, OrderItem order)
+    {
+        var json = JsonSerializer.Serialize(order);
+        var content = new StringContent(json, Encoding.UTF8, new MediaTypeHeaderValue("application/json"));
+        var response = await _httpClient.PutAsync($"Order/items/{IdOrderItem}", content);
+
+        if (response.IsSuccessStatusCode)
+        {
+            var responseJson = await response.Content.ReadAsStringAsync() ?? throw new Exception("Не удалось обработать ответ с ошибкой");
+            return;
+        }
+
+        var errorJson = await response.Content.ReadAsStringAsync() ?? throw new Exception("Не удалось обработать ответ с ошибкой");
+        var error = JsonSerializer.Deserialize<Error>(errorJson) ?? throw new Exception("Не удалось обработать ответ с ошибкой");
+        throw new Exception(error.Detail);
+    }
+
+    public async Task UpdateStatusOrderAsync(int IdOrder, OrderStatus orderStatus)
+    {
+        var response = await _httpClient.PutAsync($"Order/status/{IdOrder}?id={IdOrder}&status={Convert.ToInt32(orderStatus)}", null);
+
+        if (response.IsSuccessStatusCode)
+        {
+            var responseJson = await response.Content.ReadAsStringAsync() ?? throw new Exception("Не удалось обработать ответ с ошибкой");
+            return;
+        }
+
+        var errorJson = await response.Content.ReadAsStringAsync() ?? throw new Exception("Не удалось обработать ответ с ошибкой");
+        var error = JsonSerializer.Deserialize<Error>(errorJson) ?? throw new Exception("Не удалось обработать ответ с ошибкой");
         throw new Exception(error.Detail);
     }
 }

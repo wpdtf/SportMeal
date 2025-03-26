@@ -17,11 +17,17 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<Compile Update="customElement\CustomOrderItem.cs">
+		<Compile Update="customElement\CustomOrderItems.cs">
+		  <SubType>Component</SubType>
+		</Compile>
+		<Compile Update="customElement\CustomOrder.cs">
 		  <SubType>Component</SubType>
 		</Compile>
 		<Compile Update="FormAuth.cs">
 			<SubType>Form</SubType>
+		</Compile>
+		<Compile Update="FormDialog\FormEditOrderItem.cs">
+		  <SubType>Form</SubType>
 		</Compile>
 		<Compile Update="MainForm.cs">
 			<SubType>Form</SubType>

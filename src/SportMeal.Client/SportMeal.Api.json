@@ -721,12 +721,12 @@
       }
     },
     "/api/Order/status/{id}": {
-      "delete": {
+      "put": {
         "tags": [
           "Order"
         ],
         "summary": "обновляет статус заказа",
-        "operationId": "api/Order/status/idDELETE",
+        "operationId": "api/Order/status/idPUT",
         "parameters": [
           {
             "name": "id",
@@ -795,7 +795,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/OrderItem"
+                    "$ref": "#/components/schemas/OrderItemFull"
                   }
                 }
               },
@@ -803,7 +803,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/OrderItem"
+                    "$ref": "#/components/schemas/OrderItemFull"
                   }
                 }
               },
@@ -811,7 +811,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/OrderItem"
+                    "$ref": "#/components/schemas/OrderItemFull"
                   }
                 }
               }
@@ -1659,6 +1659,54 @@
           },
           "product": {
             "$ref": "#/components/schemas/Product"
+          }
+        },
+        "additionalProperties": false,
+        "description": "Модель позиции заказа"
+      },
+      "OrderItemFull": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "Идентификатор позиции",
+            "format": "int32"
+          },
+          "orderId": {
+            "type": "integer",
+            "description": "Идентификатор заказа",
+            "format": "int32"
+          },
+          "productId": {
+            "type": "integer",
+            "description": "Идентификатор товара",
+            "format": "int32"
+          },
+          "quantity": {
+            "type": "integer",
+            "description": "Количество товара",
+            "format": "int32"
+          },
+          "unitPrice": {
+            "type": "number",
+            "description": "Цена за единицу товара",
+            "format": "double"
+          },
+          "order": {
+            "$ref": "#/components/schemas/Order"
+          },
+          "product": {
+            "$ref": "#/components/schemas/Product"
+          },
+          "name": {
+            "type": "string",
+            "description": "Наименование продукта",
+            "nullable": true
+          },
+          "category": {
+            "type": "string",
+            "description": "Наименование категории",
+            "nullable": true
           }
         },
         "additionalProperties": false,

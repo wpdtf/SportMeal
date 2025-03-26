@@ -1,6 +1,6 @@
 USE [СпортивноеПитание]
 GO
-/****** Object:  Table [dbo].[Заказы]    Script Date: 26.03.2025 18:37:54 ******/
+/****** Object:  Table [dbo].[Заказы]    Script Date: 26.03.2025 23:44:26 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -18,7 +18,7 @@ PRIMARY KEY CLUSTERED
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[КатегорииТоваров]    Script Date: 26.03.2025 18:37:54 ******/
+/****** Object:  Table [dbo].[КатегорииТоваров]    Script Date: 26.03.2025 23:44:27 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -33,7 +33,7 @@ PRIMARY KEY CLUSTERED
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Клиенты]    Script Date: 26.03.2025 18:37:54 ******/
+/****** Object:  Table [dbo].[Клиенты]    Script Date: 26.03.2025 23:44:27 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -52,7 +52,7 @@ PRIMARY KEY CLUSTERED
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[ПозицииЗаказа]    Script Date: 26.03.2025 18:37:54 ******/
+/****** Object:  Table [dbo].[ПозицииЗаказа]    Script Date: 26.03.2025 23:44:27 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -69,7 +69,7 @@ PRIMARY KEY CLUSTERED
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Пользователи]    Script Date: 26.03.2025 18:37:54 ******/
+/****** Object:  Table [dbo].[Пользователи]    Script Date: 26.03.2025 23:44:27 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -86,7 +86,7 @@ PRIMARY KEY CLUSTERED
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Сотрудники]    Script Date: 26.03.2025 18:37:54 ******/
+/****** Object:  Table [dbo].[Сотрудники]    Script Date: 26.03.2025 23:44:27 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -106,7 +106,7 @@ PRIMARY KEY CLUSTERED
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Товары]    Script Date: 26.03.2025 18:37:54 ******/
+/****** Object:  Table [dbo].[Товары]    Script Date: 26.03.2025 23:44:27 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -330,7 +330,9 @@ INSERT [dbo].[Заказы] ([ИдЗаказа], [ИдКлиента], [ИдСо
 GO
 INSERT [dbo].[Заказы] ([ИдЗаказа], [ИдКлиента], [ИдСотрудника], [ДатаЗаказа], [СуммаЗаказа], [Статус]) VALUES (102, 8, 2, CAST(N'2024-10-16T23:11:39.823' AS DateTime), CAST(10600.00 AS Decimal(10, 2)), N'Завершен')
 GO
-INSERT [dbo].[Заказы] ([ИдЗаказа], [ИдКлиента], [ИдСотрудника], [ДатаЗаказа], [СуммаЗаказа], [Статус]) VALUES (106, 1, 0, CAST(N'2025-03-26T18:17:02.623' AS DateTime), CAST(19100.00 AS Decimal(10, 2)), N'Новый')
+INSERT [dbo].[Заказы] ([ИдЗаказа], [ИдКлиента], [ИдСотрудника], [ДатаЗаказа], [СуммаЗаказа], [Статус]) VALUES (106, 1, 0, CAST(N'2025-03-26T18:17:02.623' AS DateTime), CAST(88550.00 AS Decimal(10, 2)), N'Отменен')
+GO
+INSERT [dbo].[Заказы] ([ИдЗаказа], [ИдКлиента], [ИдСотрудника], [ДатаЗаказа], [СуммаЗаказа], [Статус]) VALUES (107, 1, 0, CAST(N'2025-03-26T23:39:31.493' AS DateTime), CAST(39690000.00 AS Decimal(10, 2)), N'Отменен')
 GO
 SET IDENTITY_INSERT [dbo].[Заказы] OFF
 GO
@@ -786,17 +788,11 @@ INSERT [dbo].[ПозицииЗаказа] ([ИдПозиции], [ИдЗаказ
 GO
 INSERT [dbo].[ПозицииЗаказа] ([ИдПозиции], [ИдЗаказа], [ИдТовара], [Количество], [ЦенаЗаЕдиницу]) VALUES (203, 100, 9, 2, CAST(3500.00 AS Decimal(10, 2)))
 GO
-INSERT [dbo].[ПозицииЗаказа] ([ИдПозиции], [ИдЗаказа], [ИдТовара], [Количество], [ЦенаЗаЕдиницу]) VALUES (206, 106, 9, 2, CAST(3500.00 AS Decimal(10, 2)))
+INSERT [dbo].[ПозицииЗаказа] ([ИдПозиции], [ИдЗаказа], [ИдТовара], [Количество], [ЦенаЗаЕдиницу]) VALUES (206, 106, 9, 5, CAST(8750.00 AS Decimal(10, 2)))
 GO
-INSERT [dbo].[ПозицииЗаказа] ([ИдПозиции], [ИдЗаказа], [ИдТовара], [Количество], [ЦенаЗаЕдиницу]) VALUES (207, 106, 2, 1, CAST(2800.00 AS Decimal(10, 2)))
+INSERT [dbo].[ПозицииЗаказа] ([ИдПозиции], [ИдЗаказа], [ИдТовара], [Количество], [ЦенаЗаЕдиницу]) VALUES (207, 106, 2, 4, CAST(11200.00 AS Decimal(10, 2)))
 GO
-INSERT [dbo].[ПозицииЗаказа] ([ИдПозиции], [ИдЗаказа], [ИдТовара], [Количество], [ЦенаЗаЕдиницу]) VALUES (208, 106, 2, 1, CAST(2800.00 AS Decimal(10, 2)))
-GO
-INSERT [dbo].[ПозицииЗаказа] ([ИдПозиции], [ИдЗаказа], [ИдТовара], [Количество], [ЦенаЗаЕдиницу]) VALUES (209, 106, 3, 1, CAST(1200.00 AS Decimal(10, 2)))
-GO
-INSERT [dbo].[ПозицииЗаказа] ([ИдПозиции], [ИдЗаказа], [ИдТовара], [Количество], [ЦенаЗаЕдиницу]) VALUES (210, 106, 2, 1, CAST(2800.00 AS Decimal(10, 2)))
-GO
-INSERT [dbo].[ПозицииЗаказа] ([ИдПозиции], [ИдЗаказа], [ИдТовара], [Количество], [ЦенаЗаЕдиницу]) VALUES (211, 106, 1, 1, CAST(2500.00 AS Decimal(10, 2)))
+INSERT [dbo].[ПозицииЗаказа] ([ИдПозиции], [ИдЗаказа], [ИдТовара], [Количество], [ЦенаЗаЕдиницу]) VALUES (212, 107, 1, 126, CAST(315000.00 AS Decimal(10, 2)))
 GO
 SET IDENTITY_INSERT [dbo].[ПозицииЗаказа] OFF
 GO
@@ -854,9 +850,9 @@ SET IDENTITY_INSERT [dbo].[Сотрудники] OFF
 GO
 SET IDENTITY_INSERT [dbo].[Товары] ON 
 GO
-INSERT [dbo].[Товары] ([ИдТовара], [ИдКатегории], [НазваниеТовара], [Описание], [Цена], [КоличествоНаСкладе]) VALUES (1, 1, N'Протеин сывороточный 1кг', N'Концентрат сывороточного протеина 80%', CAST(2500.00 AS Decimal(10, 2)), 50)
+INSERT [dbo].[Товары] ([ИдТовара], [ИдКатегории], [НазваниеТовара], [Описание], [Цена], [КоличествоНаСкладе]) VALUES (1, 1, N'Протеин сывороточный 1кг', N'Концентрат сывороточного протеина 80%', CAST(2500.00 AS Decimal(10, 2)), 133)
 GO
-INSERT [dbo].[Товары] ([ИдТовара], [ИдКатегории], [НазваниеТовара], [Описание], [Цена], [КоличествоНаСкладе]) VALUES (2, 1, N'Казеиновый протеин 1кг', N'Медленный протеин', CAST(2800.00 AS Decimal(10, 2)), 30)
+INSERT [dbo].[Товары] ([ИдТовара], [ИдКатегории], [НазваниеТовара], [Описание], [Цена], [КоличествоНаСкладе]) VALUES (2, 1, N'Казеиновый протеин 1кг', N'Медленный протеин', CAST(2800.00 AS Decimal(10, 2)), 34)
 GO
 INSERT [dbo].[Товары] ([ИдТовара], [ИдКатегории], [НазваниеТовара], [Описание], [Цена], [КоличествоНаСкладе]) VALUES (3, 2, N'Л-Карнитин 100 капс', N'Жиросжигатель', CAST(1200.00 AS Decimal(10, 2)), 45)
 GO
@@ -870,7 +866,7 @@ INSERT [dbo].[Товары] ([ИдТовара], [ИдКатегории], [На
 GO
 INSERT [dbo].[Товары] ([ИдТовара], [ИдКатегории], [НазваниеТовара], [Описание], [Цена], [КоличествоНаСкладе]) VALUES (8, 4, N'Омега-3 100 капс', N'Рыбий жир', CAST(850.00 AS Decimal(10, 2)), 55)
 GO
-INSERT [dbo].[Товары] ([ИдТовара], [ИдКатегории], [НазваниеТовара], [Описание], [Цена], [КоличествоНаСкладе]) VALUES (9, 1, N'Изолят протеина 900г', N'Изолят сывороточного протеина 90%', CAST(3500.00 AS Decimal(10, 2)), 25)
+INSERT [dbo].[Товары] ([ИдТовара], [ИдКатегории], [НазваниеТовара], [Описание], [Цена], [КоличествоНаСкладе]) VALUES (9, 1, N'Изолят протеина 900г', N'Изолят сывороточного протеина 90%', CAST(3500.00 AS Decimal(10, 2)), 30)
 GO
 INSERT [dbo].[Товары] ([ИдТовара], [ИдКатегории], [НазваниеТовара], [Описание], [Цена], [КоличествоНаСкладе]) VALUES (10, 2, N'CLA 90 капс', N'Конъюгированная линолевая кислота', CAST(1400.00 AS Decimal(10, 2)), 35)
 GO
@@ -878,7 +874,7 @@ SET IDENTITY_INSERT [dbo].[Товары] OFF
 GO
 SET ANSI_PADDING ON
 GO
-/****** Object:  Index [UQ__Пользова__BC2217D38F59D180]    Script Date: 26.03.2025 18:37:54 ******/
+/****** Object:  Index [UQ__Пользова__BC2217D38F59D180]    Script Date: 26.03.2025 23:44:27 ******/
 ALTER TABLE [dbo].[Пользователи] ADD UNIQUE NONCLUSTERED 
 (
 	[Логин] ASC
@@ -922,7 +918,7 @@ ALTER TABLE [dbo].[Заказы]  WITH CHECK ADD CHECK  (([Статус]='Отм
 GO
 ALTER TABLE [dbo].[Пользователи]  WITH CHECK ADD CHECK  (([ТипПользователя]='Сотрудник' OR [ТипПользователя]='Клиент'))
 GO
-/****** Object:  StoredProcedure [dbo].[ПроцедураАвторизации]    Script Date: 26.03.2025 18:37:54 ******/
+/****** Object:  StoredProcedure [dbo].[ПроцедураАвторизации]    Script Date: 26.03.2025 23:44:27 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -964,7 +960,7 @@ BEGIN
     END
 END
 GO
-/****** Object:  StoredProcedure [dbo].[ПроцедураДобавленияПозицииЗаказа]    Script Date: 26.03.2025 18:37:54 ******/
+/****** Object:  StoredProcedure [dbo].[ПроцедураДобавленияПозицииЗаказа]    Script Date: 26.03.2025 23:44:27 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -978,9 +974,31 @@ CREATE   PROCEDURE [dbo].[ПроцедураДобавленияПозицииЗ
     @ЦенаЗаЕдиницу DECIMAL(10,2)
 AS
 BEGIN
-    INSERT INTO ПозицииЗаказа (ИдЗаказа, ИдТовара, Количество, ЦенаЗаЕдиницу)
-    VALUES (@ИдЗаказа, @ИдТовара, @Количество, @ЦенаЗаЕдиницу);
-    
+	DECLARE @count as int, @ИдПозиции as INT
+		
+	SELECT @count = КоличествоНаСкладе
+	FROM Товары as t
+	WHERE t.ИдТовара = @ИдТовара 
+
+	if @count - 1 < 0
+	 THROW 50001, 'Весь товар раскуплен', 1;
+
+	SELECT @ИдПозиции = ps.ИдПозиции
+	FROM ПозицииЗаказа as ps
+	WHERE ps.ИдЗаказа = @ИдЗаказа AND ps.ИдТовара = @ИдТовара
+
+	if @ИдПозиции IS NULL
+	BEGIN
+		INSERT INTO ПозицииЗаказа (ИдЗаказа, ИдТовара, Количество, ЦенаЗаЕдиницу)
+		VALUES (@ИдЗаказа, @ИдТовара, @Количество, @ЦенаЗаЕдиницу);
+
+		SET @ИдПозиции = SCOPE_IDENTITY()
+	END
+    ELSE
+		UPDATE p SET p.Количество = p.Количество + 1
+		FROM ПозицииЗаказа as p
+		WHERE p.ИдПозиции = @ИдПозиции
+
     SELECT 
         пз.ИдПозиции AS Id,
         пз.ИдЗаказа AS OrderId,
@@ -988,7 +1006,7 @@ BEGIN
         пз.Количество AS Quantity,
         пз.ЦенаЗаЕдиницу AS UnitPrice
     FROM ПозицииЗаказа пз
-    WHERE пз.ИдПозиции = SCOPE_IDENTITY();
+    WHERE пз.ИдПозиции = @ИдПозиции;
 
 	declare @fullPrice AS DECIMAL(10,2)
 
@@ -1001,7 +1019,7 @@ BEGIN
 	where z.ИдЗаказа = @ИдЗаказа
 END;
 GO
-/****** Object:  StoredProcedure [dbo].[ПроцедураОбновленияКатегории]    Script Date: 26.03.2025 18:37:54 ******/
+/****** Object:  StoredProcedure [dbo].[ПроцедураОбновленияКатегории]    Script Date: 26.03.2025 23:44:27 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1021,7 +1039,7 @@ BEGIN
     WHERE ИдКатегории = @ИдКатегории;
 END;
 GO
-/****** Object:  StoredProcedure [dbo].[ПроцедураОбновленияКлиента]    Script Date: 26.03.2025 18:37:54 ******/
+/****** Object:  StoredProcedure [dbo].[ПроцедураОбновленияКлиента]    Script Date: 26.03.2025 23:44:27 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1061,7 +1079,7 @@ BEGIN
     END CATCH
 END;
 GO
-/****** Object:  StoredProcedure [dbo].[ПроцедураОбновленияКоличестваТовара]    Script Date: 26.03.2025 18:37:54 ******/
+/****** Object:  StoredProcedure [dbo].[ПроцедураОбновленияКоличестваТовара]    Script Date: 26.03.2025 23:44:27 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1078,7 +1096,7 @@ BEGIN
     WHERE ИдТовара = @ИдТовара;
 END;
 GO
-/****** Object:  StoredProcedure [dbo].[ПроцедураОбновленияПозицииЗаказа]    Script Date: 26.03.2025 18:37:54 ******/
+/****** Object:  StoredProcedure [dbo].[ПроцедураОбновленияПозицииЗаказа]    Script Date: 26.03.2025 23:44:27 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1091,14 +1109,41 @@ CREATE PROCEDURE [dbo].[ПроцедураОбновленияПозицииЗа
     @ЦенаЗаЕдиницу DECIMAL(10,2)
 AS
 BEGIN
+	DECLARE @count as int, @разница AS INT, @ИдТовара AS INT, @ИдЗаказа AS INT, @fullPrice AS DECIMAL(10,2)
+		
+	select @count = p.Количество, @ИдТовара = p.ИдТовара, @ИдЗаказа = p.ИдЗаказа
+	FROM ПозицииЗаказа as p
+	where p.ИдПозиции = @ИдПозиции
+
+	SET @разница = @Количество - @count
+
+	SELECT @count = КоличествоНаСкладе
+	FROM Товары as t
+	WHERE t.ИдТовара = @ИдТовара 
+
+	if @count - @разница < 0
+	 THROW 50001, 'Весь товар раскуплен', 1;
+
     UPDATE ПозицииЗаказа
     SET 
         Количество = @Количество,
         ЦенаЗаЕдиницу = @ЦенаЗаЕдиницу
     WHERE ИдПозиции = @ИдПозиции;
+
+	select @fullPrice = SUM(p.Количество * p.ЦенаЗаЕдиницу)
+	FROM ПозицииЗаказа as p
+	where p.ИдЗаказа = @ИдЗаказа
+
+	update z set z.СуммаЗаказа = @fullPrice
+	from Заказы as z
+	where z.ИдЗаказа = @ИдЗаказа
+
+	UPDATE t SET t.КоличествоНаСкладе = t.КоличествоНаСкладе - @разница
+	FROM Товары as t
+	WHERE t.ИдТовара = @ИдТовара 
 END;
 GO
-/****** Object:  StoredProcedure [dbo].[ПроцедураОбновленияСотрудника]    Script Date: 26.03.2025 18:37:54 ******/
+/****** Object:  StoredProcedure [dbo].[ПроцедураОбновленияСотрудника]    Script Date: 26.03.2025 23:44:27 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1140,7 +1185,7 @@ BEGIN
     END CATCH
 END;
 GO
-/****** Object:  StoredProcedure [dbo].[ПроцедураОбновленияСтатусаЗаказа]    Script Date: 26.03.2025 18:37:54 ******/
+/****** Object:  StoredProcedure [dbo].[ПроцедураОбновленияСтатусаЗаказа]    Script Date: 26.03.2025 23:44:27 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1164,9 +1209,15 @@ BEGIN
     UPDATE Заказы
     SET Статус = @СтатусТекст
     WHERE ИдЗаказа = @ИдЗаказа;
+
+	if @Статус = 3
+		UPDATE t set t.КоличествоНаСкладе = t.КоличествоНаСкладе + counts.cnt
+		FROM Товары as t
+			INNER JOIN Заказы as z on z.ИдЗаказа = @ИдЗаказа
+			CROSS APPLY (SELECT SUM(pos.Количество) as cnt FROM ПозицииЗаказа as pos WHERE pos.ИдЗаказа = z.ИдЗаказа AND pos.ИдТовара = t.ИдТовара group by pos.ИдТовара) as counts
 END;
 GO
-/****** Object:  StoredProcedure [dbo].[ПроцедураОбновленияТовара]    Script Date: 26.03.2025 18:37:54 ******/
+/****** Object:  StoredProcedure [dbo].[ПроцедураОбновленияТовара]    Script Date: 26.03.2025 23:44:27 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1192,7 +1243,7 @@ BEGIN
     WHERE ИдТовара = @ИдТовара;
 END;
 GO
-/****** Object:  StoredProcedure [dbo].[ПроцедураОтчетаПоПопулярностиТоваров]    Script Date: 26.03.2025 18:37:54 ******/
+/****** Object:  StoredProcedure [dbo].[ПроцедураОтчетаПоПопулярностиТоваров]    Script Date: 26.03.2025 23:44:27 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1217,7 +1268,7 @@ BEGIN
     ORDER BY TotalQuantitySold DESC;
 END;
 GO
-/****** Object:  StoredProcedure [dbo].[ПроцедураОтчетаПоПродажам]    Script Date: 26.03.2025 18:37:54 ******/
+/****** Object:  StoredProcedure [dbo].[ПроцедураОтчетаПоПродажам]    Script Date: 26.03.2025 23:44:27 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1241,7 +1292,7 @@ BEGIN
     ORDER BY Date;
 END;
 GO
-/****** Object:  StoredProcedure [dbo].[ПроцедураПолученияВсехЗаказов]    Script Date: 26.03.2025 18:37:54 ******/
+/****** Object:  StoredProcedure [dbo].[ПроцедураПолученияВсехЗаказов]    Script Date: 26.03.2025 23:44:27 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1267,7 +1318,7 @@ BEGIN
 	ORDER by Status ASC;
 END;
 GO
-/****** Object:  StoredProcedure [dbo].[ПроцедураПолученияВсехКатегорий]    Script Date: 26.03.2025 18:37:54 ******/
+/****** Object:  StoredProcedure [dbo].[ПроцедураПолученияВсехКатегорий]    Script Date: 26.03.2025 23:44:27 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1283,7 +1334,7 @@ BEGIN
 	FROM [СпортивноеПитание].[dbo].[КатегорииТоваров] as categ
 END;
 GO
-/****** Object:  StoredProcedure [dbo].[ПроцедураПолученияВсехКлиентов]    Script Date: 26.03.2025 18:37:54 ******/
+/****** Object:  StoredProcedure [dbo].[ПроцедураПолученияВсехКлиентов]    Script Date: 26.03.2025 23:44:27 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1307,7 +1358,7 @@ BEGIN
     INNER JOIN Пользователи п ON к.ИдПользователя = п.ИдПользователя;
 END;
 GO
-/****** Object:  StoredProcedure [dbo].[ПроцедураПолученияВсехСотрудников]    Script Date: 26.03.2025 18:37:54 ******/
+/****** Object:  StoredProcedure [dbo].[ПроцедураПолученияВсехСотрудников]    Script Date: 26.03.2025 23:44:27 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1332,7 +1383,7 @@ BEGIN
     INNER JOIN Пользователи п ON с.ИдПользователя = п.ИдПользователя;
 END;
 GO
-/****** Object:  StoredProcedure [dbo].[ПроцедураПолученияВсехТоваров]    Script Date: 26.03.2025 18:37:54 ******/
+/****** Object:  StoredProcedure [dbo].[ПроцедураПолученияВсехТоваров]    Script Date: 26.03.2025 23:44:27 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1352,7 +1403,7 @@ BEGIN
     FROM Товары т;
 END;
 GO
-/****** Object:  StoredProcedure [dbo].[ПроцедураПолученияЗаказа]    Script Date: 26.03.2025 18:37:54 ******/
+/****** Object:  StoredProcedure [dbo].[ПроцедураПолученияЗаказа]    Script Date: 26.03.2025 23:44:27 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1379,7 +1430,7 @@ BEGIN
     WHERE з.ИдЗаказа = @ИдЗаказа;
 END;
 GO
-/****** Object:  StoredProcedure [dbo].[ПроцедураПолученияЗаказовКлиента]    Script Date: 26.03.2025 18:37:54 ******/
+/****** Object:  StoredProcedure [dbo].[ПроцедураПолученияЗаказовКлиента]    Script Date: 26.03.2025 23:44:27 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1407,7 +1458,7 @@ BEGIN
 	ORDER by Status ASC;
 END;
 GO
-/****** Object:  StoredProcedure [dbo].[ПроцедураПолученияКлиента]    Script Date: 26.03.2025 18:37:54 ******/
+/****** Object:  StoredProcedure [dbo].[ПроцедураПолученияКлиента]    Script Date: 26.03.2025 23:44:27 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1432,7 +1483,7 @@ BEGIN
     WHERE к.ИдКлиента = @ИдКлиента;
 END;
 GO
-/****** Object:  StoredProcedure [dbo].[ПроцедураПолученияПозицийЗаказа]    Script Date: 26.03.2025 18:37:54 ******/
+/****** Object:  StoredProcedure [dbo].[ПроцедураПолученияПозицийЗаказа]    Script Date: 26.03.2025 23:44:27 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1447,13 +1498,17 @@ BEGIN
         з.ИдЗаказа AS OrderId,
         з.ИдПозиции AS Id,
         з.ИдТовара AS ProductId,
+		t.НазваниеТовара as [Name],
+		cat.НазваниеКатегории as Category,
         з.Количество AS Quantity,
         з.ЦенаЗаЕдиницу AS UnitPrice
     FROM ПозицииЗаказа з
+		inner join Товары as t ON t.ИдТовара = з.ИдТовара
+		inner join КатегорииТоваров as cat ON cat.ИдКатегории = t.ИдКатегории
     WHERE з.ИдЗаказа = @ИдЗаказа;
 END;
 GO
-/****** Object:  StoredProcedure [dbo].[ПроцедураПолученияСотрудника]    Script Date: 26.03.2025 18:37:54 ******/
+/****** Object:  StoredProcedure [dbo].[ПроцедураПолученияСотрудника]    Script Date: 26.03.2025 23:44:27 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1479,7 +1534,7 @@ BEGIN
     WHERE с.ИдСотрудника = @ИдСотрудника;
 END;
 GO
-/****** Object:  StoredProcedure [dbo].[ПроцедураПолученияТовара]    Script Date: 26.03.2025 18:37:54 ******/
+/****** Object:  StoredProcedure [dbo].[ПроцедураПолученияТовара]    Script Date: 26.03.2025 23:44:27 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1501,7 +1556,7 @@ BEGIN
     WHERE т.ИдТовара = @ИдТовара;
 END;
 GO
-/****** Object:  StoredProcedure [dbo].[ПроцедураПолученияТоваровПоКатегории]    Script Date: 26.03.2025 18:37:54 ******/
+/****** Object:  StoredProcedure [dbo].[ПроцедураПолученияТоваровПоКатегории]    Script Date: 26.03.2025 23:44:27 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1523,7 +1578,7 @@ BEGIN
     WHERE т.ИдКатегории = @ИдКатегории;
 END;
 GO
-/****** Object:  StoredProcedure [dbo].[ПроцедураРегистрацииКлиента]    Script Date: 26.03.2025 18:37:54 ******/
+/****** Object:  StoredProcedure [dbo].[ПроцедураРегистрацииКлиента]    Script Date: 26.03.2025 23:44:27 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1582,7 +1637,7 @@ BEGIN
     END CATCH
 END;
 GO
-/****** Object:  StoredProcedure [dbo].[ПроцедураРегистрацииСотрудника]    Script Date: 26.03.2025 18:37:54 ******/
+/****** Object:  StoredProcedure [dbo].[ПроцедураРегистрацииСотрудника]    Script Date: 26.03.2025 23:44:27 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1643,7 +1698,7 @@ BEGIN
     END CATCH
 END;
 GO
-/****** Object:  StoredProcedure [dbo].[ПроцедураСозданияЗаказа]    Script Date: 26.03.2025 18:37:54 ******/
+/****** Object:  StoredProcedure [dbo].[ПроцедураСозданияЗаказа]    Script Date: 26.03.2025 23:44:27 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1685,7 +1740,7 @@ BEGIN
     WHERE з.ИдЗаказа = SCOPE_IDENTITY();
 END;
 GO
-/****** Object:  StoredProcedure [dbo].[ПроцедураСозданияКатегории]    Script Date: 26.03.2025 18:37:54 ******/
+/****** Object:  StoredProcedure [dbo].[ПроцедураСозданияКатегории]    Script Date: 26.03.2025 23:44:27 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1707,7 +1762,7 @@ BEGIN
 	WHERE categ.ИдКатегории = SCOPE_IDENTITY()
 END;
 GO
-/****** Object:  StoredProcedure [dbo].[ПроцедураСозданияТовара]    Script Date: 26.03.2025 18:37:54 ******/
+/****** Object:  StoredProcedure [dbo].[ПроцедураСозданияТовара]    Script Date: 26.03.2025 23:44:27 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1736,7 +1791,7 @@ BEGIN
     WHERE т.ИдТовара = SCOPE_IDENTITY();
 END;
 GO
-/****** Object:  StoredProcedure [dbo].[ПроцедураУдаленияКатегории]    Script Date: 26.03.2025 18:37:54 ******/
+/****** Object:  StoredProcedure [dbo].[ПроцедураУдаленияКатегории]    Script Date: 26.03.2025 23:44:27 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1751,7 +1806,7 @@ BEGIN
     WHERE ИдКатегории = @ИдКатегории;
 END;
 GO
-/****** Object:  StoredProcedure [dbo].[ПроцедураУдаленияПозицииЗаказа]    Script Date: 26.03.2025 18:37:54 ******/
+/****** Object:  StoredProcedure [dbo].[ПроцедураУдаленияПозицииЗаказа]    Script Date: 26.03.2025 23:44:27 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1765,7 +1820,7 @@ BEGIN
     DELETE FROM ПозицииЗаказа WHERE ИдПозиции = @ИдПозиции;
 END;
 GO
-/****** Object:  StoredProcedure [dbo].[ПроцедураУдаленияТовара]    Script Date: 26.03.2025 18:37:54 ******/
+/****** Object:  StoredProcedure [dbo].[ПроцедураУдаленияТовара]    Script Date: 26.03.2025 23:44:27 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON

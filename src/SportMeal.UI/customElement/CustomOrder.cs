@@ -8,7 +8,7 @@ using System.Xml;
 
 namespace SportMeal.UI.customElement;
 
-public class CustomOrderItem : Guna2Panel
+public class CustomOrder : Guna2Panel
 {
     private int orderId;
     private DateTime dateOrder;
@@ -82,12 +82,12 @@ public class CustomOrderItem : Guna2Panel
         }
     }
 
-    public CustomOrderItem()
+    public CustomOrder()
     {
         InitializeComponent();
     }
 
-    public CustomOrderItem(int orderId, DateTime dateOrder, decimal totalAmount, OrderStatus orderStatus) : this()
+    public CustomOrder(int orderId, DateTime dateOrder, decimal totalAmount, OrderStatus orderStatus) : this()
     {
         OrderId = orderId;
         DateOrder = dateOrder;

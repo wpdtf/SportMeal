@@ -48,10 +48,10 @@ public class OrderRepository : IOrderRepository
         await _dbContext.ExecuteSqlAsync(sql);
     }
 
-    public async Task<IEnumerable<OrderItem>> GetOrderItemsAsync(int orderId)
+    public async Task<IEnumerable<OrderItemFull>> GetOrderItemsAsync(int orderId)
     {
         FormattableString sql = @$"exec dbo.ПроцедураПолученияПозицийЗаказа @ИдЗаказа = {orderId}";
-        return await Task.Run(() => _dbContext.SqlQuery<OrderItem>(sql));
+        return await Task.Run(() => _dbContext.SqlQuery<OrderItemFull>(sql));
     }
 
     public async Task<OrderItem> AddOrderItemAsync(OrderItem orderItem)
