@@ -234,7 +234,7 @@ public partial class FormEmployee : Form
         }
         else
         {
-            _txtPassword.PasswordChar = '*';
+            _txtPassword.PasswordChar = '●';
 
         }
     }

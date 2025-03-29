@@ -156,7 +156,7 @@ public partial class FormRegister : Form
         }
         else
         {
-            _txtPassword.PasswordChar = '*';
+            _txtPassword.PasswordChar = '●';
 
         }
     }
