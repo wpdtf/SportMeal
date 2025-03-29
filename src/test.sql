@@ -1473,7 +1473,7 @@ GO
 CREATE PROCEDURE [dbo].[ПроцедураПолученияВсехЗаказов]
 AS
 BEGIN
-    SELECT TOP 30
+    SELECT
         з.ИдЗаказа AS Id,
         з.ИдКлиента AS ClientId,
         з.ИдСотрудника AS EmployeeId,
