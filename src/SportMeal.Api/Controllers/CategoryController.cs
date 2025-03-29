@@ -20,9 +20,9 @@ public class CategoryController : ControllerBase
     /// Получает список всех категорий.
     /// </summary>
     /// <returns>Список категорий.</returns>
-    public async Task<IActionResult> GetCategories()
+    public async Task<IActionResult> GetCategories([FromQuery] int? idClient)
     {
-        var categories = await _repository.GetCategoriesAsync();
+        var categories = await _repository.GetCategoriesAsync(idClient);
         return Ok(categories);
     }
 

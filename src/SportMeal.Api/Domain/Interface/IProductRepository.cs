@@ -1,4 +1,5 @@
 using SportMeal.Api.Domain.Models;
+using System.Net.Sockets;
 
 namespace SportMeal.Api.Domain.Interface;
 
@@ -18,14 +19,14 @@ public interface IProductRepository
     /// Получает все товары
     /// </summary>
     /// <returns>Список всех товаров</returns>
-    Task<IEnumerable<Product>> GetAllProductsAsync();
+    Task<IEnumerable<Product>> GetAllProductsAsync(int? idClient);
 
     /// <summary>
     /// Получает товары по категории
     /// </summary>
     /// <param name="categoryId">Идентификатор категории</param>
     /// <returns>Список товаров категории</returns>
-    Task<IEnumerable<Product>> GetProductsByCategoryAsync(int categoryId);
+    Task<IEnumerable<Product>> GetProductsByCategoryAsync(int categoryId, int? idClient);
 
     /// <summary>
     /// Создает новый товар

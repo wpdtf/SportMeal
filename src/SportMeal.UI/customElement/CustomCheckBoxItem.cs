@@ -7,7 +7,7 @@ namespace SportMeal.UI.customElement;
 public class CustomCheckBoxItem : Guna2Panel
 {
     private int _itemId;
-    private string _itemTag;
+    private int _beLike;
 
     [DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
     public Guna2CheckBox CheckBox { get; private set; }
@@ -21,21 +21,19 @@ public class CustomCheckBoxItem : Guna2Panel
             if (_itemId != value)
             {
                 _itemId = value;
-                OnPropertyChanged();
             }
         }
     }
 
     [DefaultValue("")]
-    public string ItemTag
+    public int BeLike
     {
-        get => _itemTag;
+        get => _beLike;
         set
         {
-            if (_itemTag != value)
+            if (_beLike != value)
             {
-                _itemTag = value;
-                OnPropertyChanged();
+                _beLike = value;
             }
         }
     }
@@ -46,11 +44,14 @@ public class CustomCheckBoxItem : Guna2Panel
         InitializeComponent();
     }
 
-    public CustomCheckBoxItem(string text, int id, string tag = null) : this()
+    public CustomCheckBoxItem(string text, int id, int beLike = 0) : this()
     {
         ItemId = id;
-        ItemTag = tag;
-        CheckBox.Text = text;
+        BeLike = beLike;
+
+        var like = beLike == 1 ? "⭐️" : "";
+
+        CheckBox.Text = $"{like} {text}";
     }
 
     private void InitializeComponent()
@@ -84,13 +85,4 @@ public class CustomCheckBoxItem : Guna2Panel
         get => CheckBox.Checked;
         set => CheckBox.Checked = value;
     }
-
-    protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
-    {
-        // Можно добавить логику обработки изменений свойств
-    }
-
-    // Метод для сериализации (если нужно)
-    private bool ShouldSerializeItemId() => ItemId != 0;
-    private bool ShouldSerializeItemTag() => !string.IsNullOrEmpty(ItemTag);
 }

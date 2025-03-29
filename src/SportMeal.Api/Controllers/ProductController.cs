@@ -27,9 +27,9 @@ public class ProductController : ControllerBase
     /// </summary>
     /// <returns>Список товаров</returns>
     [HttpGet]
-    public async Task<ActionResult<IEnumerable<Product>>> GetAllProducts()
+    public async Task<ActionResult<IEnumerable<Product>>> GetAllProducts([FromQuery] int? idClient)
     {
-        var products = await _productRepository.GetAllProductsAsync();
+        var products = await _productRepository.GetAllProductsAsync(idClient);
         return Ok(products);
     }
 
@@ -57,9 +57,9 @@ public class ProductController : ControllerBase
     /// <param name="categoryId">Идентификатор категории</param>
     /// <returns>Список товаров категории</returns>
     [HttpGet("category/{categoryId}")]
-    public async Task<ActionResult<IEnumerable<Product>>> GetProductsByCategory(int categoryId)
+    public async Task<ActionResult<IEnumerable<Product>>> GetProductsByCategory(int categoryId, [FromQuery] int? idClient)
     {
-        var products = await _productRepository.GetProductsByCategoryAsync(categoryId);
+        var products = await _productRepository.GetProductsByCategoryAsync(categoryId, idClient);
         return Ok(products);
     }
 

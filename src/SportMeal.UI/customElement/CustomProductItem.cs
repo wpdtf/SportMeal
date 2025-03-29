@@ -15,15 +15,23 @@ public class CustomProductItem : Guna2Panel
     private string _categoryName;
     private string _description;
     private decimal _price;
+    private int _beLike;
 
     [DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
     public Guna2Button AddToOrderButton { get; private set; }
+
     [DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
     public Guna2HtmlLabel NameLabel { get; private set; }
+
     [DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
     public Guna2HtmlLabel CategoryNameLabel { get; private set; }
+
     [DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
     public Guna2HtmlLabel DescriptionLabel { get; private set; }
+
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
+    public Guna2HtmlLabel BelikeLabel { get; private set; }
+
     [DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
     public Guna2HtmlLabel PriceLabel { get; private set; }
 
@@ -92,18 +100,33 @@ public class CustomProductItem : Guna2Panel
         }
     }
 
+    [DefaultValue("")]
+    public int BeLike
+    {
+        get => _beLike;
+        set
+        {
+            if (_beLike != value)
+            {
+                _beLike = value;
+            }
+        }
+    }
+
     public CustomProductItem()
     {
         InitializeComponent();
     }
 
-    public CustomProductItem(int productId, string productName, string categoryName, string description, decimal price) : this()
+    public CustomProductItem(int productId, string productName, string categoryName, string description, decimal price, int beLike = 0) : this()
     {
         ProductId = productId;
         ProductName = productName;
         CategoryName = categoryName;
         Description = description;
         Price = price;
+        BeLike = beLike;
+        BelikeLabel.Text = beLike == 1 ? "⭐️" : "";
         NameLabel.Text = productName;
         CategoryNameLabel.Text = categoryName;
         DescriptionLabel.Text = description;
@@ -142,7 +165,7 @@ public class CustomProductItem : Guna2Panel
         NameLabel = new Guna2HtmlLabel();
         NameLabel.Size = new Size(120, 30);
         NameLabel.Font = new Font("Segoe UI Semibold", 15f, FontStyle.Bold);
-        NameLabel.Location = new Point(10, 10);
+        NameLabel.Location = new Point(10, 10); 
         NameLabel.ForeColor = Color.Black;
 
         CategoryNameLabel = new Guna2HtmlLabel();
@@ -163,11 +186,18 @@ public class CustomProductItem : Guna2Panel
         PriceLabel.Location = new Point(390, 45);
         PriceLabel.ForeColor = Color.Black;
 
+        BelikeLabel = new Guna2HtmlLabel();
+        BelikeLabel.Font = new Font("Segoe UI Emoji", 12f);
+        BelikeLabel.Size = new Size(20, 20);
+        BelikeLabel.Location = new Point(360, 10);
+        BelikeLabel.ForeColor = Color.FromArgb(0, 0, 192);
+
         // Добавление элементов
         this.Controls.Add(AddToOrderButton);
         this.Controls.Add(NameLabel);
         this.Controls.Add(CategoryNameLabel);
         this.Controls.Add(DescriptionLabel);
         this.Controls.Add(PriceLabel);
+        this.Controls.Add(BelikeLabel);
     }
 }

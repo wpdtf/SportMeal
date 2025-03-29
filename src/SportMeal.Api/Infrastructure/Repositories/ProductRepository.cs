@@ -1,4 +1,5 @@
 using SportMeal.Api.Domain.Models;
+using System.Net.Sockets;
 
 namespace SportMeal.Api.Infrastructure.Repositories;
 
@@ -17,15 +18,35 @@ public class ProductRepository : IProductRepository
         return await Task.Run(() => _dbContext.SqlQuery<Product>(sql).AsEnumerable().FirstOrDefault());
     }
 
-    public async Task<IEnumerable<Product>> GetAllProductsAsync()
+    public async Task<IEnumerable<Product>> GetAllProductsAsync(int? idClient)
     {
-        FormattableString sql = @$"exec dbo.ПроцедураПолученияВсехТоваров";
+        FormattableString sql;
+
+        if (idClient == null)
+        {
+            sql = @$"exec dbo.ПроцедураПолученияВсехТоваров";
+        }
+        else
+        {
+            sql = @$"exec dbo.ПроцедураПолученияВсехТоваров @idClient = {idClient}";
+        }
+
         return await Task.Run(() => _dbContext.SqlQuery<Product>(sql));
     }
 
-    public async Task<IEnumerable<Product>> GetProductsByCategoryAsync(int categoryId)
+    public async Task<IEnumerable<Product>> GetProductsByCategoryAsync(int categoryId, int? idClient)
     {
-        FormattableString sql = @$"exec dbo.ПроцедураПолученияТоваровПоКатегории @ИдКатегории = {categoryId}";
+        FormattableString sql;
+
+        if (idClient == null)
+        {
+            sql = @$"exec dbo.ПроцедураПолученияТоваровПоКатегории @ИдКатегории = {categoryId}";
+        }
+        else
+        {
+            sql = @$"exec dbo.ПроцедураПолученияТоваровПоКатегории @ИдКатегории = {categoryId}, @idClient = {idClient}";
+        }
+
         return await Task.Run(() => _dbContext.SqlQuery<Product>(sql));
     }
 

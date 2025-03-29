@@ -173,15 +173,15 @@ partial class FormMain
         guna2Panel1.Controls.Add(Guna2Button2);
         guna2Panel1.Controls.Add(guna2ImageButton1);
         guna2Panel1.CustomizableEdges = customizableEdges12;
-        guna2Panel1.Location = new Point(3, 40);
+        guna2Panel1.Location = new Point(0, 40);
         guna2Panel1.Name = "guna2Panel1";
         guna2Panel1.ShadowDecoration.CustomizableEdges = customizableEdges13;
-        guna2Panel1.Size = new Size(820, 81);
+        guna2Panel1.Size = new Size(823, 81);
         guna2Panel1.TabIndex = 16;
         // 
         // guna2Button7
         // 
-        guna2Button7.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+        guna2Button7.Anchor = AnchorStyles.Right;
         guna2Button7.Animated = true;
         guna2Button7.BorderColor = Color.FromArgb(16, 90, 101);
         guna2Button7.BorderRadius = 12;
@@ -194,17 +194,17 @@ partial class FormMain
         guna2Button7.FillColor = Color.FromArgb(0, 0, 192);
         guna2Button7.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 204);
         guna2Button7.ForeColor = Color.White;
-        guna2Button7.Location = new Point(72, 4);
+        guna2Button7.Location = new Point(97, 14);
         guna2Button7.Margin = new Padding(4);
         guna2Button7.Name = "guna2Button7";
         guna2Button7.ShadowDecoration.CustomizableEdges = customizableEdges2;
-        guna2Button7.Size = new Size(142, 68);
+        guna2Button7.Size = new Size(140, 50);
         guna2Button7.TabIndex = 47;
         guna2Button7.Text = "Редактирование сотрудников";
         // 
         // guna2Button6
         // 
-        guna2Button6.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+        guna2Button6.Anchor = AnchorStyles.Right;
         guna2Button6.Animated = true;
         guna2Button6.BorderColor = Color.FromArgb(16, 90, 101);
         guna2Button6.BorderRadius = 12;
@@ -217,17 +217,17 @@ partial class FormMain
         guna2Button6.FillColor = Color.FromArgb(0, 0, 192);
         guna2Button6.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 204);
         guna2Button6.ForeColor = Color.White;
-        guna2Button6.Location = new Point(220, 4);
+        guna2Button6.Location = new Point(245, 14);
         guna2Button6.Margin = new Padding(4);
         guna2Button6.Name = "guna2Button6";
         guna2Button6.ShadowDecoration.CustomizableEdges = customizableEdges4;
-        guna2Button6.Size = new Size(142, 68);
+        guna2Button6.Size = new Size(140, 50);
         guna2Button6.TabIndex = 46;
         guna2Button6.Text = "Редактирование заказов";
         // 
         // guna2Button5
         // 
-        guna2Button5.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+        guna2Button5.Anchor = AnchorStyles.Right;
         guna2Button5.Animated = true;
         guna2Button5.BorderColor = Color.FromArgb(16, 90, 101);
         guna2Button5.BorderRadius = 12;
@@ -240,17 +240,17 @@ partial class FormMain
         guna2Button5.FillColor = Color.FromArgb(0, 0, 192);
         guna2Button5.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 204);
         guna2Button5.ForeColor = Color.White;
-        guna2Button5.Location = new Point(370, 4);
+        guna2Button5.Location = new Point(393, 14);
         guna2Button5.Margin = new Padding(4);
         guna2Button5.Name = "guna2Button5";
         guna2Button5.ShadowDecoration.CustomizableEdges = customizableEdges6;
-        guna2Button5.Size = new Size(142, 68);
+        guna2Button5.Size = new Size(140, 50);
         guna2Button5.TabIndex = 45;
         guna2Button5.Text = "Редактирование категорий";
         // 
         // guna2Button4
         // 
-        guna2Button4.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+        guna2Button4.Anchor = AnchorStyles.Right;
         guna2Button4.Animated = true;
         guna2Button4.BorderColor = Color.FromArgb(16, 90, 101);
         guna2Button4.BorderRadius = 12;
@@ -263,18 +263,18 @@ partial class FormMain
         guna2Button4.FillColor = Color.FromArgb(0, 0, 192);
         guna2Button4.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 204);
         guna2Button4.ForeColor = Color.White;
-        guna2Button4.Location = new Point(520, 4);
+        guna2Button4.Location = new Point(541, 14);
         guna2Button4.Margin = new Padding(4);
         guna2Button4.Name = "guna2Button4";
         guna2Button4.ShadowDecoration.CustomizableEdges = customizableEdges8;
-        guna2Button4.Size = new Size(142, 68);
+        guna2Button4.Size = new Size(140, 50);
         guna2Button4.TabIndex = 44;
         guna2Button4.Text = "Редактирование товаров";
         guna2Button4.Click += guna2Button4_Click_1;
         // 
         // Guna2Button2
         // 
-        Guna2Button2.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+        Guna2Button2.Anchor = AnchorStyles.Right;
         Guna2Button2.Animated = true;
         Guna2Button2.BorderColor = Color.FromArgb(16, 90, 101);
         Guna2Button2.BorderRadius = 12;
@@ -287,13 +287,14 @@ partial class FormMain
         Guna2Button2.FillColor = Color.FromArgb(0, 0, 192);
         Guna2Button2.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 204);
         Guna2Button2.ForeColor = Color.White;
-        Guna2Button2.Location = new Point(670, 4);
+        Guna2Button2.Location = new Point(690, 14);
         Guna2Button2.Margin = new Padding(4);
         Guna2Button2.Name = "Guna2Button2";
         Guna2Button2.ShadowDecoration.CustomizableEdges = customizableEdges10;
-        Guna2Button2.Size = new Size(145, 68);
+        Guna2Button2.Size = new Size(120, 50);
         Guna2Button2.TabIndex = 41;
         Guna2Button2.Text = "Личный кабинет";
+        Guna2Button2.Click += Guna2Button2_Click;
         // 
         // guna2ImageButton1
         // 

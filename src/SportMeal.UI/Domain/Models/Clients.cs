@@ -1,3 +1,4 @@
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Text.Json.Serialization;
 
 namespace SportMeal.UI.Domain.Models;
@@ -25,9 +26,15 @@ public class Clients
     [JsonPropertyName("registrationDate")]
     public DateTime RegistrationDate { get; set; }
 
-    [JsonPropertyName("user")]
-    public User User { get; set; } = new();
+    [JsonPropertyName("dateBirth")]
+    public DateTime DateBirth { get; set; }
 
-    [JsonPropertyName("orders")]
-    public ICollection<Order> Orders { get; set; } = new List<Order>();
+    [JsonPropertyName("height")]
+    public decimal Height { get; set; }
+
+    [JsonPropertyName("weight")]
+    public decimal Weight { get; set; }
+
+    [JsonPropertyName("goal")]
+    public string Goal { get; set; }
 } 

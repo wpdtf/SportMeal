@@ -121,7 +121,9 @@ public class ApiClient
 
     public async Task<List<Category>> GetCategoriesAsync()
     {
-        var response = await _httpClient.GetAsync("Category");
+        var url = CurrentUser.Position == "" ? $"Category?idClient={CurrentUser.Id}" : $"Category";
+
+        var response = await _httpClient.GetAsync(url);
         if (response.IsSuccessStatusCode)
         {
             var responseJson = await response.Content.ReadAsStringAsync();
@@ -138,6 +140,8 @@ public class ApiClient
         var url = categoryId.HasValue
             ? $"Product/category/{categoryId}"
             : "Product";
+
+        url = CurrentUser.Position == "" ? $"{url}?idClient={CurrentUser.Id}" : url;
 
         var response = await _httpClient.GetAsync(url);
         if (response.IsSuccessStatusCode)
@@ -266,6 +270,51 @@ public class ApiClient
     public async Task UpdateStatusOrderAsync(int IdOrder, OrderStatus orderStatus)
     {
         var response = await _httpClient.PutAsync($"Order/status/{IdOrder}?id={IdOrder}&status={Convert.ToInt32(orderStatus)}", null);
+
+        if (response.IsSuccessStatusCode)
+        {
+            var responseJson = await response.Content.ReadAsStringAsync() ?? throw new Exception("Не удалось обработать ответ с ошибкой");
+            return;
+        }
+
+        var errorJson = await response.Content.ReadAsStringAsync() ?? throw new Exception("Не удалось обработать ответ с ошибкой");
+        var error = JsonSerializer.Deserialize<Error>(errorJson) ?? throw new Exception("Не удалось обработать ответ с ошибкой");
+        throw new Exception(error.Detail);
+    }
+
+    public async Task<Clients> GetClientIfnoAync(int clientId)
+    {
+        var response = await _httpClient.GetAsync($"Client/{clientId}");
+        if (response.IsSuccessStatusCode)
+        {
+            var responseJson = await response.Content.ReadAsStringAsync();
+            return JsonSerializer.Deserialize<Clients>(responseJson) ?? throw new Exception("Не удалось получить информацию по заказу");
+        }
+
+        var errorJson = await response.Content.ReadAsStringAsync() ?? throw new Exception("Не удалось обработать ответ с ошибкой");
+        var error = JsonSerializer.Deserialize<Error>(errorJson) ?? throw new Exception("Не удалось обработать ответ с ошибкой");
+        throw new Exception(error.Detail);
+    }
+
+    public async Task<List<Clients>> GetFullClientIfnoAync()
+    {
+        var response = await _httpClient.GetAsync("Client");
+        if (response.IsSuccessStatusCode)
+        {
+            var responseJson = await response.Content.ReadAsStringAsync();
+            return JsonSerializer.Deserialize<List<Clients>>(responseJson) ?? throw new Exception("Не удалось получить информацию по заказу");
+        }
+
+        var errorJson = await response.Content.ReadAsStringAsync() ?? throw new Exception("Не удалось обработать ответ с ошибкой");
+        var error = JsonSerializer.Deserialize<Error>(errorJson) ?? throw new Exception("Не удалось обработать ответ с ошибкой");
+        throw new Exception(error.Detail);
+    }
+
+    public async Task UpdateClientInfo(int ClientId, Clients client)
+    {
+        var json = JsonSerializer.Serialize(client);
+        var content = new StringContent(json, Encoding.UTF8, new MediaTypeHeaderValue("application/json"));
+        var response = await _httpClient.PutAsync($"Client/{ClientId}", content);
 
         if (response.IsSuccessStatusCode)
         {

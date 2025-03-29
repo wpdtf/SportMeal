@@ -42,7 +42,11 @@ public class ClientRepository : IClientRepository
             @Имя = {client.FirstName},
             @Фамилия = {client.LastName},
             @Телефон = {client.Phone},
-            @Почта = {client.Email}";
+            @Почта = {client.Email},
+            @ДатаРождения = {client.DateBirth},
+            @Рост = {client.Height},
+            @Вес = {client.Weight},
+            @Цель = {client.Goal}";
         await _dbContext.ExecuteSqlAsync(sql);
     }
 }

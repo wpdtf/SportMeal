@@ -36,7 +36,9 @@ public class Product
     /// Количество товара на складе
     /// </summary>
     public int StockQuantity { get; set; }
-    
+
+    public int BeLike { get; set; }
+
     /// <summary>
     /// Связанная категория
     /// </summary>

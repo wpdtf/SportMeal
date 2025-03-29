@@ -11,4 +11,7 @@ public class Category
 
     [JsonPropertyName("description")]
     public string Description { get; set; }
+
+    [JsonPropertyName("beLike")]
+    public int BeLike { get; set; }
 } 

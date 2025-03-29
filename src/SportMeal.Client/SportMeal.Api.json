@@ -48,6 +48,16 @@
           "Category"
         ],
         "operationId": "api/CategoryGET",
+        "parameters": [
+          {
+            "name": "idClient",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
         "responses": {
           "200": {
             "description": "Success"
@@ -979,6 +989,16 @@
         ],
         "summary": "Получает список всех товаров",
         "operationId": "api/ProductGET",
+        "parameters": [
+          {
+            "name": "idClient",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
         "responses": {
           "200": {
             "description": "Success",
@@ -1209,6 +1229,14 @@
             "in": "path",
             "description": "Идентификатор категории",
             "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "idClient",
+            "in": "query",
             "schema": {
               "type": "integer",
               "format": "int32"
@@ -1455,6 +1483,10 @@
             "type": "string",
             "nullable": true
           },
+          "beLike": {
+            "type": "integer",
+            "format": "int32"
+          },
           "products": {
             "type": "array",
             "items": {
@@ -1495,6 +1527,26 @@
             "nullable": true
           },
           "email": {
+            "type": "string",
+            "description": "Email клиента",
+            "nullable": true
+          },
+          "dateBirth": {
+            "type": "string",
+            "description": "Фамилия клиента",
+            "format": "date-time"
+          },
+          "height": {
+            "type": "number",
+            "description": "Телефон клиента",
+            "format": "double"
+          },
+          "weight": {
+            "type": "number",
+            "description": "Email клиента",
+            "format": "double"
+          },
+          "goal": {
             "type": "string",
             "description": "Email клиента",
             "nullable": true
@@ -1743,6 +1795,10 @@
           "stockQuantity": {
             "type": "integer",
             "description": "Количество товара на складе",
+            "format": "int32"
+          },
+          "beLike": {
+            "type": "integer",
             "format": "int32"
           },
           "category": {

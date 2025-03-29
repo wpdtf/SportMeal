@@ -26,6 +26,9 @@
 		<Compile Update="FormAuth.cs">
 			<SubType>Form</SubType>
 		</Compile>
+		<Compile Update="FormDialog\FormLk.cs">
+		  <SubType>Form</SubType>
+		</Compile>
 		<Compile Update="FormDialog\FormEditOrderItem.cs">
 		  <SubType>Form</SubType>
 		</Compile>

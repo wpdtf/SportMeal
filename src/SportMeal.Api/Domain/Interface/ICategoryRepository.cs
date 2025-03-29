@@ -8,7 +8,7 @@ public interface ICategoryRepository
     /// Получает все категории.
     /// </summary>
     /// <returns>Список категорий.</returns>
-    Task<IEnumerable<Category>> GetCategoriesAsync();
+    Task<IEnumerable<Category>> GetCategoriesAsync(int? idClient);
 
     /// <summary>
     /// Создает новую категорию.

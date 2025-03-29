@@ -11,9 +11,19 @@ public class CategRepository : ICategoryRepository
         _dbContext = dbContext.Database;
     }
 
-    public async Task<IEnumerable<Category>> GetCategoriesAsync()
+    public async Task<IEnumerable<Category>> GetCategoriesAsync(int? idClient)
     {
-        FormattableString sql = @$"exec dbo.ПроцедураПолученияВсехКатегорий";
+        FormattableString sql;
+
+        if (idClient == null)
+        {
+            sql = @$"exec dbo.ПроцедураПолученияВсехКатегорий";
+        }
+        else
+        {
+            sql = @$"exec dbo.ПроцедураПолученияВсехКатегорий @idClient = {idClient}";
+        }
+
         return await Task.Run(() => _dbContext.SqlQuery<Category>(sql).AsEnumerable());
     }
 

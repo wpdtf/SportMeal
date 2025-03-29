@@ -38,6 +38,26 @@ public class Client
     public string Email { get; set; }
 
     /// <summary>
+    /// Фамилия клиента
+    /// </summary>
+    public DateTime DateBirth { get; set; }
+
+    /// <summary>
+    /// Телефон клиента
+    /// </summary>
+    public decimal Height { get; set; }
+
+    /// <summary>
+    /// Email клиента
+    /// </summary>
+    public decimal Weight { get; set; }
+
+    /// <summary>
+    /// Email клиента
+    /// </summary>
+    public string Goal { get; set; }
+
+    /// <summary>
     /// Дата регистрации
     /// </summary>
     public DateTime RegistrationDate { get; set; }

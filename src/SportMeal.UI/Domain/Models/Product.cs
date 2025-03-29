@@ -42,7 +42,10 @@ public class Product
     /// </summary>
     [JsonPropertyName("stockQuantity")]
     public int StockQuantity { get; set; }
-    
+
+    [JsonPropertyName("beLike")]
+    public int BeLike { get; set; }
+
     /// <summary>
     /// Связанная категория
     /// </summary>

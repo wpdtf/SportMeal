@@ -38,9 +38,14 @@ public partial class FormMain : Form
         {
             case "менеджер по продажам":
                 guna2Button7.Dispose();
+                Guna2Button2.Enabled = false;
                 break;
             case "старший менеджер":
                 guna2Button7.Dispose();
+                Guna2Button2.Enabled = false;
+                break;
+            case "админ":
+                Guna2Button2.Enabled = false;
                 break;
             case "":
                 guna2Button7.Dispose();
@@ -51,7 +56,7 @@ public partial class FormMain : Form
         }
     }
 
-    private async Task UploadFormAsync()
+    public async Task UploadFormAsync()
     {
         try
         {
@@ -67,7 +72,7 @@ public partial class FormMain : Form
 
         foreach (var categ in _listCateg)
         {
-            var customItem = new CustomCheckBoxItem(categ.Name, categ.Id)
+            var customItem = new CustomCheckBoxItem(categ.Name, categ.Id, categ.BeLike)
             {
                 Cursor = Cursors.Hand
             };
@@ -103,7 +108,7 @@ public partial class FormMain : Form
         }
     }
 
-    private async Task UploadProductAsync()
+    public async Task UploadProductAsync()
     {
         var product = new List<Product>();
         try
@@ -128,7 +133,7 @@ public partial class FormMain : Form
 
         foreach (var item in product)
         {
-            var customItem = new CustomProductItem(item.Id, item.Name, _listCateg.FirstOrDefault(i => i.Id == item.CategoryId).Name, item.Description, item.Price)
+            var customItem = new CustomProductItem(item.Id, item.Name, _listCateg.FirstOrDefault(i => i.Id == item.CategoryId).Name, item.Description, item.Price, item.BeLike)
             {
             };
 
@@ -137,7 +142,7 @@ public partial class FormMain : Form
                 AddToOrderAsync(customItem.ProductId, item.Price);
             };
 
-            customItem.AddToOrderButton.Visible = CurrentUser.Position == "" ? true : false;
+            customItem.AddToOrderButton.Enabled = CurrentUser.Position == "" ? true : false;
 
             flowLayoutPanel2.Controls.Add(customItem);
         }
@@ -171,7 +176,7 @@ public partial class FormMain : Form
             {
             };
 
-            customItem.EditButton.Visible = item.Status == OrderStatus.Новый ? true : false;
+            customItem.EditButton.Visible = item.Status == OrderStatus.Новый && CurrentUser.Position == "" ? true : false;
 
             customItem.EditButton.Click += (s, e) =>
             {
@@ -231,5 +236,11 @@ public partial class FormMain : Form
     private void flowLayoutPanel1_Paint(object sender, PaintEventArgs e)
     {
 
+    }
+
+    private void Guna2Button2_Click(object sender, EventArgs e)
+    {
+        FormLk form = new(_apiClient, this, CurrentUser.Id);
+        form.Show();
     }
 }
