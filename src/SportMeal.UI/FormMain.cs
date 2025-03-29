@@ -15,6 +15,7 @@ public partial class FormMain : Form
     private CustomCheckBoxItem _selectedItem = default;
     private List<Category> _listCateg;
     private List<Order> _listOrder;
+    private List<Product> _product;
 
     public CustomCheckBoxItem GetSelectedItem() => _selectedItem;
 
@@ -38,14 +39,15 @@ public partial class FormMain : Form
         {
             case "менеджер по продажам":
                 guna2Button7.Dispose();
-                Guna2Button2.Enabled = false;
+                Guna2Button2.Text = "Отчеты";
                 break;
             case "старший менеджер":
                 guna2Button7.Dispose();
+                Guna2Button2.Text = "Отчеты";
                 Guna2Button2.Enabled = false;
                 break;
             case "админ":
-                Guna2Button2.Enabled = false;
+                Guna2Button2.Text = "Отчеты";
                 break;
             case "":
                 guna2Button7.Dispose();
@@ -110,16 +112,15 @@ public partial class FormMain : Form
 
     public async Task UploadProductAsync()
     {
-        var product = new List<Product>();
         try
         {
             if (_selectedItem is null)
             {
-                product = await _apiClient.GetProductsAsync();
+                _product = await _apiClient.GetProductsAsync();
             }
             else
             {
-                product = await _apiClient.GetProductsAsync(_selectedItem.ItemId);
+                _product = await _apiClient.GetProductsAsync(_selectedItem.ItemId);
             }
 
         }
@@ -131,7 +132,7 @@ public partial class FormMain : Form
 
         flowLayoutPanel2.Controls.Clear();
 
-        foreach (var item in product)
+        foreach (var item in _product)
         {
             var customItem = new CustomProductItem(item.Id, item.Name, _listCateg.FirstOrDefault(i => i.Id == item.CategoryId).Name, item.Description, item.Price, item.BeLike)
             {
@@ -201,7 +202,7 @@ public partial class FormMain : Form
                 Status = OrderStatus.Новый
             };
 
-            orderItem = await _apiClient.CreateOrderAsync(newOrder);
+            orderItem = await _apiClient.CreateAsync(newOrder);
         }
 
         var item = new OrderItem()
@@ -212,7 +213,7 @@ public partial class FormMain : Form
             UnitPrice = unitPrice
         };
 
-        await _apiClient.AddItemInOrderAsync(orderItem.Id, item);
+        await _apiClient.CreateAsync(orderItem.Id, item);
 
         await UploadOrderAsync();
     }
@@ -230,7 +231,9 @@ public partial class FormMain : Form
 
     private void guna2Button4_Click_1(object sender, EventArgs e)
     {
-
+        //продукты
+        FormList form = new(_apiClient, _product);
+        form.Show();
     }
 
     private void flowLayoutPanel1_Paint(object sender, PaintEventArgs e)
@@ -240,7 +243,49 @@ public partial class FormMain : Form
 
     private void Guna2Button2_Click(object sender, EventArgs e)
     {
-        FormLk form = new(_apiClient, this, CurrentUser.Id);
+        if (CurrentUser.Position == "")
+        {
+            FormLk form = new(_apiClient, this, CurrentUser.Id);
+            form.Show();
+        }
+        else
+        {
+            //Отчеты
+            FormList form = new(_apiClient, null);
+            form.Show();
+        }
+    }
+
+    private void guna2Button5_Click(object sender, EventArgs e)
+    {
+        //категории
+        FormList form = new(_apiClient, _listCateg);
+        form.Show();
+    }
+
+    private async void guna2Button7_Click(object sender, EventArgs e)
+    {
+        //сотрудники
+        var listEmployee = new List<Employee>();
+
+        try
+        {
+            listEmployee = await _apiClient.GetEmployeeAsync();
+        }
+        catch (Exception ex)
+        {
+            MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            return;
+        }
+
+        FormList form = new(_apiClient, listEmployee);
+        form.Show();
+    }
+
+    private void guna2Button6_Click(object sender, EventArgs e)
+    {
+        //заказы
+        FormList form = new(_apiClient, _listOrder);
         form.Show();
     }
 }

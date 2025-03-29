@@ -1,3 +1,4 @@
+using SportMeal.Api.Domain.DTO;
 using SportMeal.Api.Domain.Models;
 
 namespace SportMeal.Api.Infrastructure.Repositories;
@@ -46,5 +47,21 @@ public class EmployeeRepository : IEmployeeRepository
             @Почта = {employee.Email},
             @Должность = {employee.Position}";
         await _dbContext.ExecuteSqlAsync(sql);
+    }
+
+    public async Task UpdateUserInfo(UpdateEmployeeDTO employee)
+    {
+        FormattableString sql = @$"exec dbo.ПроцедураОбновленияПользователя 
+            @ИдСотрудника = {employee.EmployeeId},
+            @Логин = {employee.Login},
+            @Пароль = {employee.Password}";
+        await _dbContext.ExecuteSqlAsync(sql);
+    }
+
+    public async Task<string> GetLoginAsync(int employeeId)
+    {
+        FormattableString sql = @$"exec dbo.ПроцедураПолученияЛогинаСотрудника 
+            @ИдСотрудника = {employeeId}";
+        return await Task.Run(() => _dbContext.SqlQuery<string>(sql).AsEnumerable().First());
     }
 } 

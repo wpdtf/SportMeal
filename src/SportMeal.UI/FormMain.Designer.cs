@@ -201,6 +201,7 @@ partial class FormMain
         guna2Button7.Size = new Size(140, 50);
         guna2Button7.TabIndex = 47;
         guna2Button7.Text = "Редактирование сотрудников";
+        guna2Button7.Click += guna2Button7_Click;
         // 
         // guna2Button6
         // 
@@ -224,6 +225,7 @@ partial class FormMain
         guna2Button6.Size = new Size(140, 50);
         guna2Button6.TabIndex = 46;
         guna2Button6.Text = "Редактирование заказов";
+        guna2Button6.Click += guna2Button6_Click;
         // 
         // guna2Button5
         // 
@@ -247,6 +249,7 @@ partial class FormMain
         guna2Button5.Size = new Size(140, 50);
         guna2Button5.TabIndex = 45;
         guna2Button5.Text = "Редактирование категорий";
+        guna2Button5.Click += guna2Button5_Click;
         // 
         // guna2Button4
         // 

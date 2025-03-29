@@ -66,7 +66,7 @@ public interface IOrderRepository
     /// <param name="startDate">Начальная дата</param>
     /// <param name="endDate">Конечная дата</param>
     /// <returns>Список отчетов по продажам</returns>
-    Task<IEnumerable<SalesReport>> GetSalesReportAsync(DateTime startDate, DateTime endDate);
+    Task<IEnumerable<SalesReport>> GetSalesReportAsync();
 
     /// <summary>
     /// Получает отчет по популярности товаров за период
@@ -74,7 +74,7 @@ public interface IOrderRepository
     /// <param name="startDate">Начальная дата</param>
     /// <param name="endDate">Конечная дата</param>
     /// <returns>Список отчетов по популярности товаров</returns>
-    Task<IEnumerable<ProductPopularityReport>> GetPopularProductsReportAsync(DateTime startDate, DateTime endDate);
+    Task<IEnumerable<ProductPopularityReport>> GetPopularProductsReportAsync();
 
     /// <summary>
     /// Обновление статуса заказа

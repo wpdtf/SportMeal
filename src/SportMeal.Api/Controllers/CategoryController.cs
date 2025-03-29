@@ -48,15 +48,4 @@ public class CategoryController : ControllerBase
         await _repository.UpdateCategoriesAsync(category);
         return NoContent();
     }
-
-    [HttpDelete("{id}")]
-    /// <summary>
-    /// Удаляет категорию по идентификатору.
-    /// </summary>
-    /// <param name="id">Идентификатор категории для удаления.</param>
-    public async Task<IActionResult> DeleteCategory(int id)
-    {
-        await _repository.DeleteCategoriesAsync(id);
-        return NoContent();
-    }
 } 

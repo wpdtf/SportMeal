@@ -90,7 +90,7 @@ public partial class FormEditOrderItem : Form
     {
         try
         {
-            await _apiClient.DeleteOrderItemAsync(ItemId);
+            await _apiClient.DeleteAsync(ItemId);
 
         }
         catch (Exception ex)
@@ -116,7 +116,7 @@ public partial class FormEditOrderItem : Form
 
         try
         {
-            await _apiClient.UpdateOrderItem(itemId, orderItem);
+            await _apiClient.UpdateAsync(itemId, orderItem);
 
         }
         catch (Exception ex)
@@ -133,7 +133,7 @@ public partial class FormEditOrderItem : Form
     {
         try
         {
-            await _apiClient.UpdateStatusOrderAsync(OrderId, orderStatus);
+            await _apiClient.UpdateAsync(OrderId, orderStatus);
             this.Close();
 
         }

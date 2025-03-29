@@ -2,7 +2,7 @@ using Guna.UI2.WinForms;
 
 namespace SportMeal.UI.FormDialog;
 
-partial class FormRegister
+partial class FormEmployee
 {
     private System.ComponentModel.IContainer components = null;
 
@@ -40,7 +40,8 @@ partial class FormRegister
         Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges20 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
         Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges21 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
         Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges22 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-        System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormRegister));
+        System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormEmployee));
+        Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges23 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
         _txtLogin = new Guna2TextBox();
         _txtPassword = new Guna2TextBox();
         _txtPasswordConfirm = new Guna2TextBox();
@@ -63,6 +64,10 @@ partial class FormRegister
         label3 = new Label();
         guna2DragControl1 = new Guna2DragControl(components);
         guna2BorderlessForm1 = new Guna2BorderlessForm(components);
+        guna2ImageButton1 = new Guna2ImageButton();
+        status3 = new Guna2RadioButton();
+        status2 = new Guna2RadioButton();
+        status1 = new Guna2RadioButton();
         guna2CheckBox2 = new Guna2CheckBox();
         panel2.SuspendLayout();
         SuspendLayout();
@@ -81,7 +86,7 @@ partial class FormRegister
         _txtLogin.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 204);
         _txtLogin.ForeColor = Color.Black;
         _txtLogin.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-        _txtLogin.Location = new Point(20, 85);
+        _txtLogin.Location = new Point(12, 142);
         _txtLogin.Name = "_txtLogin";
         _txtLogin.PlaceholderText = "";
         _txtLogin.SelectedText = "";
@@ -103,7 +108,7 @@ partial class FormRegister
         _txtPassword.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 204);
         _txtPassword.ForeColor = Color.Black;
         _txtPassword.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-        _txtPassword.Location = new Point(20, 143);
+        _txtPassword.Location = new Point(12, 204);
         _txtPassword.Name = "_txtPassword";
         _txtPassword.PasswordChar = '●';
         _txtPassword.PlaceholderText = "";
@@ -126,7 +131,7 @@ partial class FormRegister
         _txtPasswordConfirm.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 204);
         _txtPasswordConfirm.ForeColor = Color.Black;
         _txtPasswordConfirm.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-        _txtPasswordConfirm.Location = new Point(20, 198);
+        _txtPasswordConfirm.Location = new Point(12, 264);
         _txtPasswordConfirm.Name = "_txtPasswordConfirm";
         _txtPasswordConfirm.PasswordChar = '●';
         _txtPasswordConfirm.PlaceholderText = "";
@@ -149,7 +154,7 @@ partial class FormRegister
         _txtFirstName.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 204);
         _txtFirstName.ForeColor = Color.Black;
         _txtFirstName.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-        _txtFirstName.Location = new Point(248, 83);
+        _txtFirstName.Location = new Point(71, 72);
         _txtFirstName.Name = "_txtFirstName";
         _txtFirstName.PlaceholderText = "";
         _txtFirstName.SelectedText = "";
@@ -171,7 +176,7 @@ partial class FormRegister
         _txtLastName.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 204);
         _txtLastName.ForeColor = Color.Black;
         _txtLastName.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-        _txtLastName.Location = new Point(248, 143);
+        _txtLastName.Location = new Point(289, 72);
         _txtLastName.Name = "_txtLastName";
         _txtLastName.PlaceholderText = "";
         _txtLastName.SelectedText = "";
@@ -193,7 +198,7 @@ partial class FormRegister
         _txtEmail.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 204);
         _txtEmail.ForeColor = Color.Black;
         _txtEmail.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-        _txtEmail.Location = new Point(248, 198);
+        _txtEmail.Location = new Point(230, 142);
         _txtEmail.Name = "_txtEmail";
         _txtEmail.PlaceholderText = "";
         _txtEmail.SelectedText = "";
@@ -215,7 +220,7 @@ partial class FormRegister
         _txtPhone.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 204);
         _txtPhone.ForeColor = Color.Black;
         _txtPhone.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-        _txtPhone.Location = new Point(20, 259);
+        _txtPhone.Location = new Point(230, 204);
         _txtPhone.Name = "_txtPhone";
         _txtPhone.PlaceholderText = "";
         _txtPhone.SelectedText = "";
@@ -234,12 +239,12 @@ partial class FormRegister
         _btnRegister.FillColor = Color.FromArgb(0, 0, 192);
         _btnRegister.Font = new Font("Segoe UI", 9F);
         _btnRegister.ForeColor = Color.White;
-        _btnRegister.Location = new Point(248, 259);
+        _btnRegister.Location = new Point(298, 348);
         _btnRegister.Name = "_btnRegister";
         _btnRegister.ShadowDecoration.CustomizableEdges = customizableEdges16;
-        _btnRegister.Size = new Size(212, 40);
+        _btnRegister.Size = new Size(117, 40);
         _btnRegister.TabIndex = 7;
-        _btnRegister.Text = "Зарегистрироваться";
+        _btnRegister.Text = "Сохранить";
         _btnRegister.Click += _btnRegister_Click;
         // 
         // _btnCancel
@@ -253,10 +258,10 @@ partial class FormRegister
         _btnCancel.FillColor = Color.FromArgb(0, 0, 192);
         _btnCancel.Font = new Font("Segoe UI", 9F);
         _btnCancel.ForeColor = Color.White;
-        _btnCancel.Location = new Point(248, 305);
+        _btnCancel.Location = new Point(421, 348);
         _btnCancel.Name = "_btnCancel";
         _btnCancel.ShadowDecoration.CustomizableEdges = customizableEdges18;
-        _btnCancel.Size = new Size(212, 40);
+        _btnCancel.Size = new Size(117, 40);
         _btnCancel.TabIndex = 8;
         _btnCancel.Text = "Отмена";
         _btnCancel.Click += _btnCancel_Click;
@@ -266,7 +271,7 @@ partial class FormRegister
         _lblLogin.BackColor = Color.Transparent;
         _lblLogin.Font = new Font("Segoe UI", 9F);
         _lblLogin.ForeColor = Color.Black;
-        _lblLogin.Location = new Point(20, 65);
+        _lblLogin.Location = new Point(12, 122);
         _lblLogin.Name = "_lblLogin";
         _lblLogin.Size = new Size(40, 17);
         _lblLogin.TabIndex = 9;
@@ -277,7 +282,7 @@ partial class FormRegister
         _lblPassword.BackColor = Color.Transparent;
         _lblPassword.Font = new Font("Segoe UI", 9F);
         _lblPassword.ForeColor = Color.Black;
-        _lblPassword.Location = new Point(20, 123);
+        _lblPassword.Location = new Point(12, 184);
         _lblPassword.Name = "_lblPassword";
         _lblPassword.Size = new Size(48, 17);
         _lblPassword.TabIndex = 10;
@@ -288,7 +293,7 @@ partial class FormRegister
         _lblPasswordConfirm.BackColor = Color.Transparent;
         _lblPasswordConfirm.Font = new Font("Segoe UI", 9F);
         _lblPasswordConfirm.ForeColor = Color.Black;
-        _lblPasswordConfirm.Location = new Point(20, 180);
+        _lblPasswordConfirm.Location = new Point(12, 246);
         _lblPasswordConfirm.Name = "_lblPasswordConfirm";
         _lblPasswordConfirm.Size = new Size(119, 17);
         _lblPasswordConfirm.TabIndex = 11;
@@ -299,7 +304,7 @@ partial class FormRegister
         _lblFirstName.BackColor = Color.Transparent;
         _lblFirstName.Font = new Font("Segoe UI", 9F);
         _lblFirstName.ForeColor = Color.Black;
-        _lblFirstName.Location = new Point(248, 65);
+        _lblFirstName.Location = new Point(71, 54);
         _lblFirstName.Name = "_lblFirstName";
         _lblFirstName.Size = new Size(30, 17);
         _lblFirstName.TabIndex = 12;
@@ -310,7 +315,7 @@ partial class FormRegister
         _lblLastName.BackColor = Color.Transparent;
         _lblLastName.Font = new Font("Segoe UI", 9F);
         _lblLastName.ForeColor = Color.Black;
-        _lblLastName.Location = new Point(248, 123);
+        _lblLastName.Location = new Point(289, 52);
         _lblLastName.Name = "_lblLastName";
         _lblLastName.Size = new Size(57, 17);
         _lblLastName.TabIndex = 13;
@@ -321,7 +326,7 @@ partial class FormRegister
         _lblEmail.BackColor = Color.Transparent;
         _lblEmail.Font = new Font("Segoe UI", 9F);
         _lblEmail.ForeColor = Color.Black;
-        _lblEmail.Location = new Point(248, 180);
+        _lblEmail.Location = new Point(230, 124);
         _lblEmail.Name = "_lblEmail";
         _lblEmail.Size = new Size(35, 17);
         _lblEmail.TabIndex = 14;
@@ -332,7 +337,7 @@ partial class FormRegister
         _lblPhone.BackColor = Color.Transparent;
         _lblPhone.Font = new Font("Segoe UI", 9F);
         _lblPhone.ForeColor = Color.Black;
-        _lblPhone.Location = new Point(20, 236);
+        _lblPhone.Location = new Point(230, 181);
         _lblPhone.Name = "_lblPhone";
         _lblPhone.Size = new Size(54, 17);
         _lblPhone.TabIndex = 15;
@@ -349,7 +354,7 @@ partial class FormRegister
         panel2.Location = new Point(0, 0);
         panel2.Margin = new Padding(4);
         panel2.Name = "panel2";
-        panel2.Size = new Size(472, 40);
+        panel2.Size = new Size(550, 40);
         panel2.TabIndex = 27;
         // 
         // guna2ControlBox1
@@ -360,7 +365,7 @@ partial class FormRegister
         guna2ControlBox1.CustomizableEdges = customizableEdges19;
         guna2ControlBox1.FillColor = Color.FromArgb(0, 0, 64);
         guna2ControlBox1.IconColor = Color.White;
-        guna2ControlBox1.Location = new Point(434, 4);
+        guna2ControlBox1.Location = new Point(512, 4);
         guna2ControlBox1.Margin = new Padding(3, 2, 3, 2);
         guna2ControlBox1.Name = "guna2ControlBox1";
         guna2ControlBox1.ShadowDecoration.CustomizableEdges = customizableEdges20;
@@ -376,7 +381,7 @@ partial class FormRegister
         guna2ControlBox2.CustomizableEdges = customizableEdges21;
         guna2ControlBox2.FillColor = Color.FromArgb(0, 0, 64);
         guna2ControlBox2.IconColor = Color.White;
-        guna2ControlBox2.Location = new Point(667, 5);
+        guna2ControlBox2.Location = new Point(745, 5);
         guna2ControlBox2.Margin = new Padding(3, 2, 3, 2);
         guna2ControlBox2.Name = "guna2ControlBox2";
         guna2ControlBox2.ShadowDecoration.CustomizableEdges = customizableEdges22;
@@ -391,9 +396,9 @@ partial class FormRegister
         label3.Location = new Point(10, 11);
         label3.Margin = new Padding(4, 0, 4, 0);
         label3.Name = "label3";
-        label3.Size = new Size(96, 20);
+        label3.Size = new Size(175, 20);
         label3.TabIndex = 17;
-        label3.Text = "Регистрация";
+        label3.Text = "Изменение сотрудника";
         // 
         // guna2DragControl1
         // 
@@ -411,6 +416,74 @@ partial class FormRegister
         guna2BorderlessForm1.DragStartTransparencyValue = 1D;
         guna2BorderlessForm1.TransparentWhileDrag = true;
         // 
+        // guna2ImageButton1
+        // 
+        guna2ImageButton1.CheckedState.ImageSize = new Size(64, 64);
+        guna2ImageButton1.HoverState.ImageSize = new Size(64, 64);
+        guna2ImageButton1.Image = (Image)resources.GetObject("guna2ImageButton1.Image");
+        guna2ImageButton1.ImageOffset = new Point(0, 0);
+        guna2ImageButton1.ImageRotate = 0F;
+        guna2ImageButton1.Location = new Point(10, 47);
+        guna2ImageButton1.Name = "guna2ImageButton1";
+        guna2ImageButton1.PressedState.ImageSize = new Size(64, 64);
+        guna2ImageButton1.ShadowDecoration.CustomizableEdges = customizableEdges23;
+        guna2ImageButton1.Size = new Size(56, 61);
+        guna2ImageButton1.TabIndex = 30;
+        // 
+        // status3
+        // 
+        status3.AutoSize = true;
+        status3.CheckedState.BorderColor = Color.FromArgb(94, 148, 255);
+        status3.CheckedState.BorderThickness = 0;
+        status3.CheckedState.FillColor = Color.FromArgb(94, 148, 255);
+        status3.CheckedState.InnerColor = Color.White;
+        status3.CheckedState.InnerOffset = -4;
+        status3.Location = new Point(12, 359);
+        status3.Name = "status3";
+        status3.Size = new Size(62, 19);
+        status3.TabIndex = 59;
+        status3.Text = "Админ";
+        status3.UncheckedState.BorderColor = Color.FromArgb(0, 0, 192);
+        status3.UncheckedState.BorderThickness = 2;
+        status3.UncheckedState.FillColor = Color.Transparent;
+        status3.UncheckedState.InnerColor = Color.Transparent;
+        // 
+        // status2
+        // 
+        status2.AutoSize = true;
+        status2.CheckedState.BorderColor = Color.FromArgb(94, 148, 255);
+        status2.CheckedState.BorderThickness = 0;
+        status2.CheckedState.FillColor = Color.FromArgb(94, 148, 255);
+        status2.CheckedState.InnerColor = Color.White;
+        status2.CheckedState.InnerOffset = -4;
+        status2.Location = new Point(12, 334);
+        status2.Name = "status2";
+        status2.Size = new Size(135, 19);
+        status2.TabIndex = 58;
+        status2.Text = "Старший менеджер";
+        status2.UncheckedState.BorderColor = Color.FromArgb(0, 0, 192);
+        status2.UncheckedState.BorderThickness = 2;
+        status2.UncheckedState.FillColor = Color.Transparent;
+        status2.UncheckedState.InnerColor = Color.Transparent;
+        // 
+        // status1
+        // 
+        status1.AutoSize = true;
+        status1.CheckedState.BorderColor = Color.FromArgb(94, 148, 255);
+        status1.CheckedState.BorderThickness = 0;
+        status1.CheckedState.FillColor = Color.FromArgb(94, 148, 255);
+        status1.CheckedState.InnerColor = Color.White;
+        status1.CheckedState.InnerOffset = -4;
+        status1.Location = new Point(12, 309);
+        status1.Name = "status1";
+        status1.Size = new Size(160, 19);
+        status1.TabIndex = 57;
+        status1.Text = "Менеджер по продажам";
+        status1.UncheckedState.BorderColor = Color.FromArgb(0, 0, 192);
+        status1.UncheckedState.BorderThickness = 2;
+        status1.UncheckedState.FillColor = Color.Transparent;
+        status1.UncheckedState.InnerColor = Color.Transparent;
+        // 
         // guna2CheckBox2
         // 
         guna2CheckBox2.AutoSize = true;
@@ -418,10 +491,10 @@ partial class FormRegister
         guna2CheckBox2.CheckedState.BorderRadius = 0;
         guna2CheckBox2.CheckedState.BorderThickness = 0;
         guna2CheckBox2.CheckedState.FillColor = Color.FromArgb(94, 148, 255);
-        guna2CheckBox2.Location = new Point(74, 123);
+        guna2CheckBox2.Location = new Point(66, 184);
         guna2CheckBox2.Name = "guna2CheckBox2";
         guna2CheckBox2.Size = new Size(76, 19);
-        guna2CheckBox2.TabIndex = 61;
+        guna2CheckBox2.TabIndex = 60;
         guna2CheckBox2.Text = "Показать";
         guna2CheckBox2.UncheckedState.BorderColor = Color.FromArgb(125, 137, 149);
         guna2CheckBox2.UncheckedState.BorderRadius = 0;
@@ -429,14 +502,18 @@ partial class FormRegister
         guna2CheckBox2.UncheckedState.FillColor = Color.FromArgb(125, 137, 149);
         guna2CheckBox2.CheckedChanged += guna2CheckBox2_CheckedChanged;
         // 
-        // FormRegister
+        // FormEmployee
         // 
         AllowDrop = true;
         AutoScaleDimensions = new SizeF(7F, 15F);
         AutoScaleMode = AutoScaleMode.Font;
         BackColor = Color.White;
-        ClientSize = new Size(472, 370);
+        ClientSize = new Size(550, 400);
         Controls.Add(guna2CheckBox2);
+        Controls.Add(status3);
+        Controls.Add(status2);
+        Controls.Add(status1);
+        Controls.Add(guna2ImageButton1);
         Controls.Add(panel2);
         Controls.Add(_lblPhone);
         Controls.Add(_lblEmail);
@@ -458,7 +535,7 @@ partial class FormRegister
         FormBorderStyle = FormBorderStyle.None;
         Icon = (Icon)resources.GetObject("$this.Icon");
         Margin = new Padding(4);
-        Name = "FormRegister";
+        Name = "FormEmployee";
         StartPosition = FormStartPosition.CenterScreen;
         Text = "Регистрация";
         FormClosing += FormRegister_FormClosing;
@@ -490,5 +567,9 @@ partial class FormRegister
     private Guna.UI2.WinForms.Guna2ControlBox guna2ControlBox1;
     private Guna.UI2.WinForms.Guna2DragControl guna2DragControl1;
     private Guna.UI2.WinForms.Guna2BorderlessForm guna2BorderlessForm1;
+    private Guna2ImageButton guna2ImageButton1;
+    private Guna2RadioButton status3;
+    private Guna2RadioButton status2;
+    private Guna2RadioButton status1;
     private Guna2CheckBox guna2CheckBox2;
 } 

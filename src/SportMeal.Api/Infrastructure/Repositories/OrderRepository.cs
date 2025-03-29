@@ -79,19 +79,15 @@ public class OrderRepository : IOrderRepository
         await _dbContext.ExecuteSqlAsync(sql);
     }
 
-    public async Task<IEnumerable<SalesReport>> GetSalesReportAsync(DateTime startDate, DateTime endDate)
+    public async Task<IEnumerable<SalesReport>> GetSalesReportAsync()
     {
-        FormattableString sql = @$"exec dbo.ПроцедураОтчетаПоПродажам 
-            @ДатаНачала = {startDate}, 
-            @ДатаКонца = {endDate}";
+        FormattableString sql = @$"exec dbo.ПроцедураОтчетаПоПродажам";
         return await Task.Run(() => _dbContext.SqlQuery<SalesReport>(sql));
     }
 
-    public async Task<IEnumerable<ProductPopularityReport>> GetPopularProductsReportAsync(DateTime startDate, DateTime endDate)
+    public async Task<IEnumerable<ProductPopularityReport>> GetPopularProductsReportAsync()
     {
-        FormattableString sql = @$"exec dbo.ПроцедураОтчетаПоПопулярностиТоваров 
-            @ДатаНачала = {startDate}, 
-            @ДатаКонца = {endDate}";
+        FormattableString sql = @$"exec dbo.ПроцедураОтчетаПоПопулярностиТоваров";
         return await Task.Run(() => _dbContext.SqlQuery<ProductPopularityReport>(sql));
     }
 } 

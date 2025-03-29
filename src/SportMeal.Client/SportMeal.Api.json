@@ -125,30 +125,6 @@
         }
       }
     },
-    "/api/Category/{id}": {
-      "delete": {
-        "tags": [
-          "Category"
-        ],
-        "operationId": "api/Category/idDELETE",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "format": "int32"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Success"
-          }
-        }
-      }
-    },
     "/api/Client": {
       "get": {
         "tags": [
@@ -524,6 +500,111 @@
         "responses": {
           "200": {
             "description": "Success"
+          },
+          "204": {
+            "description": "Сотрудник успешно обновлен"
+          },
+          "400": {
+            "description": "Некорректные данные"
+          },
+          "404": {
+            "description": "Сотрудник не найден"
+          }
+        }
+      }
+    },
+    "/api/Employee/user/{id}": {
+      "put": {
+        "tags": [
+          "Employee"
+        ],
+        "summary": "Обновляет данные пользователя сотрудника",
+        "operationId": "api/Employee/user/idPUT",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Идентификатор сотрудника",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Обновленные данные сотрудника",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateEmployeeDTO"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateEmployeeDTO"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateEmployeeDTO"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "204": {
+            "description": "Сотрудник успешно обновлен"
+          },
+          "400": {
+            "description": "Некорректные данные"
+          },
+          "404": {
+            "description": "Сотрудник не найден"
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "Employee"
+        ],
+        "summary": "Получение логина сотрудника",
+        "operationId": "api/Employee/user/idGET",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Идентификатор сотрудника",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
           },
           "204": {
             "description": "Сотрудник успешно обновлен"
@@ -1338,26 +1419,6 @@
         ],
         "summary": "Получает отчет по продажам за период",
         "operationId": "api/Report/salesGET",
-        "parameters": [
-          {
-            "name": "startDate",
-            "in": "query",
-            "description": "Начальная дата",
-            "schema": {
-              "type": "string",
-              "format": "date-time"
-            }
-          },
-          {
-            "name": "endDate",
-            "in": "query",
-            "description": "Конечная дата",
-            "schema": {
-              "type": "string",
-              "format": "date-time"
-            }
-          }
-        ],
         "responses": {
           "200": {
             "description": "Success",
@@ -1398,26 +1459,6 @@
         ],
         "summary": "Получает отчет по популярности товаров за период",
         "operationId": "api/Report/popular-productsGET",
-        "parameters": [
-          {
-            "name": "startDate",
-            "in": "query",
-            "description": "Начальная дата",
-            "schema": {
-              "type": "string",
-              "format": "date-time"
-            }
-          },
-          {
-            "name": "endDate",
-            "in": "query",
-            "description": "Конечная дата",
-            "schema": {
-              "type": "string",
-              "format": "date-time"
-            }
-          }
-        ],
         "responses": {
           "200": {
             "description": "Success",
@@ -1869,6 +1910,24 @@
         },
         "additionalProperties": false,
         "description": "Модель отчета по продажам"
+      },
+      "UpdateEmployeeDTO": {
+        "type": "object",
+        "properties": {
+          "login": {
+            "type": "string",
+            "nullable": true
+          },
+          "password": {
+            "type": "string",
+            "nullable": true
+          },
+          "employeeId": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
       },
       "User": {
         "type": "object",

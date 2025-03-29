@@ -105,7 +105,7 @@ public partial class FormLk : Form
 
         try
         {
-            await _apiClient.UpdateClientInfo(ClientId, editClient);
+            await _apiClient.UpdateAsync(ClientId, editClient);
 
         }
         catch (Exception ex)
@@ -114,7 +114,6 @@ public partial class FormLk : Form
             return;
         }
         
-        MessageBox.Show("Данные обновлены!.", "Успешно", MessageBoxButtons.OK, MessageBoxIcon.Information);
         IsFullUpdate = true;
         this.Close();
     }

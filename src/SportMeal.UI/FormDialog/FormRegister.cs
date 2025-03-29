@@ -1,6 +1,7 @@
 using SportMeal.UI.Client;
 using SportMeal.UI.Domain.Models;
 using SportMeal.UI.StaticModel;
+using System.Security.Cryptography;
 using System.Text.RegularExpressions;
 
 namespace SportMeal.UI.FormDialog;
@@ -110,7 +111,7 @@ public partial class FormRegister : Form
                 User = new RegisterUser
                 {
                     Login = _txtLogin.Text,
-                    PasswordHash = _txtPassword.Text
+                    PasswordHash = HashPassword(_txtPassword.Text)
                 }
             };
 
@@ -138,6 +139,25 @@ public partial class FormRegister : Form
         if (this.DialogResult == DialogResult.None)
         {
             this.DialogResult = DialogResult.Cancel;
+        }
+    }
+
+    private string HashPassword(string password)
+    {
+        byte[] bytes = SHA256.HashData(Encoding.UTF8.GetBytes(password));
+        return Convert.ToBase64String(bytes);
+    }
+
+    private void guna2CheckBox2_CheckedChanged(object sender, EventArgs e)
+    {
+        if (guna2CheckBox2.Checked)
+        {
+            _txtPassword.PasswordChar = '\0';
+        }
+        else
+        {
+            _txtPassword.PasswordChar = '*';
+
         }
     }
 } 

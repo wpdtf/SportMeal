@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using SportMeal.Api.Domain.DTO;
 using SportMeal.Api.Domain.Interface;
 using SportMeal.Api.Domain.Models;
 
@@ -84,5 +85,40 @@ public class EmployeeController : ControllerBase
 
         await _employeeRepository.UpdateEmployeeAsync(employee);
         return NoContent();
+    }
+
+    /// <summary>
+    /// Обновляет данные пользователя сотрудника
+    /// </summary>
+    /// <param name="id">Идентификатор сотрудника</param>
+    /// <param name="employee">Обновленные данные сотрудника</param>
+    /// <returns>Результат операции</returns>
+    /// <response code="204">Сотрудник успешно обновлен</response>
+    /// <response code="400">Некорректные данные</response>
+    /// <response code="404">Сотрудник не найден</response>
+    [HttpPut("user/{id}")]
+    public async Task<IActionResult> UpdateUserEmployee(int id, UpdateEmployeeDTO employee)
+    {
+        if (id != employee.EmployeeId)
+        {
+            return BadRequest();
+        }
+
+        await _employeeRepository.UpdateUserInfo(employee);
+        return NoContent();
+    }
+
+    /// <summary>
+    /// Получение логина сотрудника
+    /// </summary>
+    /// <param name="id">Идентификатор сотрудника</param>
+    /// <returns>Результат операции</returns>
+    /// <response code="204">Сотрудник успешно обновлен</response>
+    /// <response code="400">Некорректные данные</response>
+    /// <response code="404">Сотрудник не найден</response>
+    [HttpGet("user/{id}")]
+    public async Task<ActionResult<string>> UpdateUserEmployee(int id)
+    {
+        return await _employeeRepository.GetLoginAsync(id);
     }
 } 

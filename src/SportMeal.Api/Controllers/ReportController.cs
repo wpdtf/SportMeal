@@ -25,30 +25,22 @@ public class ReportController : ControllerBase
     /// <summary>
     /// Получает отчет по продажам за период
     /// </summary>
-    /// <param name="startDate">Начальная дата</param>
-    /// <param name="endDate">Конечная дата</param>
     /// <returns>Список отчетов по продажам</returns>
     [HttpGet("sales")]
-    public async Task<ActionResult<IEnumerable<SalesReport>>> GetSalesReport(
-        [FromQuery] DateTime startDate,
-        [FromQuery] DateTime endDate)
+    public async Task<ActionResult<IEnumerable<SalesReport>>> GetSalesReport()
     {
-        var report = await _orderRepository.GetSalesReportAsync(startDate, endDate);
+        var report = await _orderRepository.GetSalesReportAsync();
         return Ok(report);
     }
 
     /// <summary>
     /// Получает отчет по популярности товаров за период
     /// </summary>
-    /// <param name="startDate">Начальная дата</param>
-    /// <param name="endDate">Конечная дата</param>
     /// <returns>Список отчетов по популярности товаров</returns>
     [HttpGet("popular-products")]
-    public async Task<ActionResult<IEnumerable<ProductPopularityReport>>> GetPopularProductsReport(
-        [FromQuery] DateTime startDate,
-        [FromQuery] DateTime endDate)
+    public async Task<ActionResult<IEnumerable<ProductPopularityReport>>> GetPopularProductsReport()
     {
-        var report = await _orderRepository.GetPopularProductsReportAsync(startDate, endDate);
+        var report = await _orderRepository.GetPopularProductsReportAsync();
         return Ok(report);
     }
 }

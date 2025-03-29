@@ -26,10 +26,22 @@
 		<Compile Update="FormAuth.cs">
 			<SubType>Form</SubType>
 		</Compile>
+		<Compile Update="FormDialog\FormProduct.cs">
+		  <SubType>Form</SubType>
+		</Compile>
+		<Compile Update="FormDialog\FormCateg.cs">
+		  <SubType>Form</SubType>
+		</Compile>
 		<Compile Update="FormDialog\FormLk.cs">
 		  <SubType>Form</SubType>
 		</Compile>
 		<Compile Update="FormDialog\FormEditOrderItem.cs">
+		  <SubType>Form</SubType>
+		</Compile>
+		<Compile Update="FormDialog\FormEmployee.cs">
+		  <SubType>Form</SubType>
+		</Compile>
+		<Compile Update="FormList.cs">
 		  <SubType>Form</SubType>
 		</Compile>
 		<Compile Update="MainForm.cs">
