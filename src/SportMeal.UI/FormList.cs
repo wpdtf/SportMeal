@@ -1,7 +1,9 @@
 using OfficeOpenXml;
 using SportMeal.UI.Client;
 using SportMeal.UI.FormDialog;
+using System.Collections;
 using System.Collections.Generic;
+using System.Windows.Forms;
 
 namespace SportMeal.UI;
 
@@ -281,6 +283,34 @@ public partial class FormList : Form
                 MessageBox.Show($"Выберете отчет!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
+    }
+
+    private void _txtFirstName_TextChanged(object sender, EventArgs e)
+    {
+        if (guna2DataGridView1.DataSource == null) return;
+
+        var data = (guna2DataGridView1.DataSource as IEnumerable)?.Cast<object>();
+        if (data == null) return;
+
+        var searchText = SearchText.Text.ToLower();
+
+        if (string.IsNullOrWhiteSpace(searchText))
+        {
+            guna2DataGridView1.DataSource = _data;
+            return;
+        }
+
+        var filtered = data.Where(item =>
+        {
+            var properties = item.GetType().GetProperties();
+            return properties.Any(prop =>
+            {
+                var value = prop.GetValue(item)?.ToString()?.ToLower();
+                return value != null && value.Contains(searchText);
+            });
+        }).ToList();
+
+        guna2DataGridView1.DataSource = filtered.Any() ? filtered : data;
     }
 
 
