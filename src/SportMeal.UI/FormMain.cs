@@ -232,7 +232,7 @@ public partial class FormMain : Form
     private void guna2Button4_Click_1(object sender, EventArgs e)
     {
         //продукты
-        FormList form = new(_apiClient, _product);
+        FormList form = new(this, _apiClient, _product);
         form.Show();
     }
 
@@ -251,7 +251,7 @@ public partial class FormMain : Form
         else
         {
             //Отчеты
-            FormList form = new(_apiClient, null);
+            FormList form = new(this, _apiClient, null);
             form.Show();
         }
     }
@@ -259,7 +259,7 @@ public partial class FormMain : Form
     private void guna2Button5_Click(object sender, EventArgs e)
     {
         //категории
-        FormList form = new(_apiClient, _listCateg);
+        FormList form = new(this, _apiClient, _listCateg);
         form.Show();
     }
 
@@ -278,14 +278,14 @@ public partial class FormMain : Form
             return;
         }
 
-        FormList form = new(_apiClient, listEmployee);
+        FormList form = new(this, _apiClient, listEmployee);
         form.Show();
     }
 
     private void guna2Button6_Click(object sender, EventArgs e)
     {
         //заказы
-        FormList form = new(_apiClient, _listOrder);
+        FormList form = new(this, _apiClient, _listOrder);
         form.Show();
     }
 }

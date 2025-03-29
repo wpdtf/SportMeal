@@ -11,11 +11,13 @@ public partial class FormList : Form
 {
     private object _data;
     private readonly ApiClient _apiClient;
+    private readonly FormMain _formMain;
 
-    public FormList(ApiClient apiClient, object data)
+    public FormList(FormMain formMain, ApiClient apiClient, object data)
     {
         InitializeComponent();
         _apiClient = apiClient;
+        _formMain = formMain;
         _data = data;
         if (_data is not null)
         {
@@ -311,6 +313,13 @@ public partial class FormList : Form
         }).ToList();
 
         guna2DataGridView1.DataSource = filtered.Any() ? filtered : data;
+    }
+
+    private async void FormList_FormClosed(object sender, FormClosedEventArgs e)
+    {
+        await _formMain.UploadFormAsync();
+        await _formMain.UploadProductAsync();
+        await _formMain.UploadOrderAsync();
     }
 
 
